@@ -29,5 +29,5 @@
 <body>
     
     <header class="header">
-        <img class="header__brand" src="wp-content/uploads/2019/02/CA_LandingPage_ChildressNameplate-02.svg" alt="Childress Agency"/>
+        <img class="header__brand" src="<?php echo get_option( 'header-logo' ); ?>" alt="Childress Agency"/>
     </header>
