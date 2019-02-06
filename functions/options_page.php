@@ -6,23 +6,21 @@
     add_action( 'admin_menu', 'theme_options' );
 
     function register_mysettings() { // whitelist options
-      register_setting( 'theme_options', 'logo' );
-      register_setting( 'theme_options', 'address' );
-      register_setting( 'theme_options', 'phone' );
-      register_setting( 'theme_options', 'email' );
-      register_setting( 'theme_options', 'twitter' );
-      register_setting( 'theme_options', 'facebook' );
-      register_setting( 'theme_options', 'linkedin' );
-      register_setting( 'theme_options', 'instagram' );
-      register_setting( 'theme_options', 'insta_access_token' );
-      register_setting( 'theme_options', 'hours-monday' );
-      register_setting( 'theme_options', 'hours-tuesday' );
-      register_setting( 'theme_options', 'hours-wednesday' );
-      register_setting( 'theme_options', 'hours-thursday' );
-      register_setting( 'theme_options', 'hours-friday' );
-      register_setting( 'theme_options', 'hours-saturday' );
-      register_setting( 'theme_options', 'hours-sunday' );
-      register_setting( 'theme_options', 'copyright' );
+        register_setting( 'theme_options', 'header-logo' );
+        register_setting( 'theme_options', 'footer-logo' );
+        register_setting( 'theme_options', 'office-1' );
+        register_setting( 'theme_options', 'phone-1' );
+        register_setting( 'theme_options', 'address-1' );
+        register_setting( 'theme_options', 'office-2' );
+        register_setting( 'theme_options', 'phone-2' );
+        register_setting( 'theme_options', 'address-2' );
+        register_setting( 'theme_options', 'copyright' );
+        register_setting( 'theme_options', 'facebook' );
+        register_setting( 'theme_options', 'twitter' );
+        register_setting( 'theme_options', 'instagram' );
+        register_setting( 'theme_options', 'linkedin' );
+        register_setting( 'theme_options', 'pinterest' );
+        register_setting( 'theme_options', 'google-plus' );
     }
     add_action( 'admin_init', 'register_mysettings' );
 
@@ -42,10 +40,18 @@
 
                 <table class="form-table">
                     <tr valign="top">
-                        <th scope="row">Logo</th>
+                        <th scope="row">Header Logo</th>
                         <td style="display: flex; flex-direction: column; align-items: flex-start;">
-                            <img class="logo" src="<?php echo get_option('logo'); ?>" height="100"/>
-                            <input class="logo_url" type="text" name="logo" size="60" value="<?php echo get_option('logo'); ?>">
+                            <img class="header-logo" src="<?php echo get_option('header-logo'); ?>" height="100"/>
+                            <input class="logo_url" type="text" name="header-logo" size="60" value="<?php echo get_option('header-logo'); ?>">
+                            <a href="#" class="logo_upload">Set Image</a>
+                        </td>
+                    </tr>
+                    <tr valign="top">
+                        <th scope="row">Footer Logo</th>
+                        <td style="display: flex; flex-direction: column; align-items: flex-start;">
+                            <img class="footer-logo" src="<?php echo get_option('footer-logo'); ?>" height="100"/>
+                            <input class="logo_url" type="text" name="footer-logo" size="60" value="<?php echo get_option('footer-logo'); ?>">
                             <a href="#" class="logo_upload">Set Image</a>
                         </td>
                     </tr>
@@ -79,18 +85,35 @@
                 <h2>Contact Info</h2>
                 <table class="form-table">
                     <tr valign="top">
-                        <th scope="row">Address</th>
-                        <td><input type="text" name="address" value="<?php echo esc_attr( get_option('address') ); ?>" size="60" /></td>
+                        <th scope="row">Office 1</th>
+                        <td><input type="text" name="office-1" value="<?php echo esc_attr( get_option('office-1') ); ?>" size="60" /></td>
                     </tr>
                     
                     <tr valign="top">
-                        <th scope="row">Phone</th>
-                        <td><input type="text" name="phone" value="<?php echo esc_attr( get_option('phone') ); ?>" size="60" /></td>
+                        <th scope="row">Phone 1</th>
+                        <td><input type="text" name="phone-1" value="<?php echo esc_attr( get_option('phone-1') ); ?>" size="60" /></td>
                     </tr>
 
                     <tr valign="top">
-                        <th scope="row">Email</th>
-                        <td><input type="text" name="email" value="<?php echo esc_attr( get_option('email') ); ?>" size="60" /></td>
+                        <th scope="row">Address 1</th>
+                        <td><input type="text" name="address-1" value="<?php echo esc_attr( get_option('address-1') ); ?>" size="60" /></td>
+                    </tr>
+                </table>
+
+                <table class="form-table">
+                    <tr valign="top">
+                        <th scope="row">Office 2</th>
+                        <td><input type="text" name="office-2" value="<?php echo esc_attr( get_option('office-2') ); ?>" size="60" /></td>
+                    </tr>
+                    
+                    <tr valign="top">
+                        <th scope="row">Phone 2</th>
+                        <td><input type="text" name="phone-2" value="<?php echo esc_attr( get_option('phone-2') ); ?>" size="60" /></td>
+                    </tr>
+
+                    <tr valign="top">
+                        <th scope="row">Address 2</th>
+                        <td><input type="text" name="address-2" value="<?php echo esc_attr( get_option('address-2') ); ?>" size="60" /></td>
                     </tr>
                 </table>
 
@@ -99,18 +122,13 @@
                 <h2>Social</h2>
                 <table class="form-table">
                     <tr valign="top">
-                        <th scope="row">Twitter</th>
-                        <td><input type="text" name="twitter" value="<?php echo esc_attr( get_option('twitter') ); ?>" size="60" /></td>
-                    </tr>
-
-                    <tr valign="top">
                         <th scope="row">Facebook</th>
                         <td><input type="text" name="facebook" value="<?php echo esc_attr( get_option('facebook') ); ?>" size="60" /></td>
                     </tr>
 
                     <tr valign="top">
-                        <th scope="row">Linkedin</th>
-                        <td><input type="text" name="linkedin" value="<?php echo esc_attr( get_option('linkedin') ); ?>" size="60" /></td>
+                        <th scope="row">Twitter</th>
+                        <td><input type="text" name="twitter" value="<?php echo esc_attr( get_option('twitter') ); ?>" size="60" /></td>
                     </tr>
 
                     <tr valign="top">
@@ -119,52 +137,23 @@
                     </tr>
 
                     <tr valign="top">
-                        <th scope="row">Instagram Access Token</th>
-                        <td><input type="text" name="insta_access_token" value="<?php echo esc_attr( get_option('insta_access_token') ); ?>" size="60" /></td>
+                        <th scope="row">Linkedin</th>
+                        <td><input type="text" name="linkedin" value="<?php echo esc_attr( get_option('linkedin') ); ?>" size="60" /></td>
+                    </tr>
+
+                    <tr valign="top">
+                        <th scope="row">Pinterest</th>
+                        <td><input type="text" name="pinterest" value="<?php echo esc_attr( get_option('pinterest') ); ?>" size="60" /></td>
+                    </tr>
+
+                    <tr valign="top">
+                        <th scope="row">Google Plus</th>
+                        <td><input type="text" name="google-plus" value="<?php echo esc_attr( get_option('google-plus') ); ?>" size="60" /></td>
                     </tr>
                 </table>
 
                 <hr />
 
-                <h2>Hours</h2>
-                <table class="form-table">
-                    <tr valign="top">
-                        <th scope="row">Monday</th>
-                        <td><input type="text" name="hours-monday" value="<?php echo esc_attr( get_option('hours-monday') ); ?>" size="60" /></td>
-                    </tr>
-
-                    <tr valign="top">
-                        <th scope="row">Tuesday</th>
-                        <td><input type="text" name="hours-tuesday" value="<?php echo esc_attr( get_option('hours-tuesday') ); ?>" size="60" /></td>
-                    </tr>
-
-                    <tr valign="top">
-                        <th scope="row">Wednesday</th>
-                        <td><input type="text" name="hours-wednesday" value="<?php echo esc_attr( get_option('hours-wednesday') ); ?>" size="60" /></td>
-                    </tr>
-
-                    <tr valign="top">
-                        <th scope="row">Thursday</th>
-                        <td><input type="text" name="hours-thursday" value="<?php echo esc_attr( get_option('hours-thursday') ); ?>" size="60" /></td>
-                    </tr>
-
-                    <tr valign="top">
-                        <th scope="row">Friday</th>
-                        <td><input type="text" name="hours-friday" value="<?php echo esc_attr( get_option('hours-friday') ); ?>" size="60" /></td>
-                    </tr>
-
-                    <tr valign="top">
-                        <th scope="row">Saturday</th>
-                        <td><input type="text" name="hours-saturday" value="<?php echo esc_attr( get_option('hours-saturday') ); ?>" size="60" /></td>
-                    </tr>
-
-                    <tr valign="top">
-                        <th scope="row">Sunday</th>
-                        <td><input type="text" name="hours-sunday" value="<?php echo esc_attr( get_option('hours-sunday') ); ?>" size="60" /></td>
-                    </tr>
-                </table>
-
-                <h2>Footer</h2>
                 <table class="form-table">
                     <tr valign="top">
                         <th scope="row">Copyright</th>

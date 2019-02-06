@@ -107,7 +107,7 @@
 	}
 	add_action( 'after_setup_theme', 'childress_color_palette' );
 
-	// include "functions/options_page.php";
+	include "functions/options_page.php";
 	// include "functions/custom-nav-walker.php";
 	include "functions/gutenberg-blocks.php";
 ?>
