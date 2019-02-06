@@ -70,3 +70,33 @@ function hero_box_block(){
 }
 add_action( 'init', 'hero_box_block', 10, 0 );
 
+///////////////////////////////////////////////////////////////////////////////
+// ICON ROW                                                                  //
+///////////////////////////////////////////////////////////////////////////////
+function icon_row_block(){
+    wp_register_script(
+        'icon-row-script',
+        get_template_directory_uri() . '/js/block-icon-row.js',
+        array( 'wp-blocks', 'wp-element', 'wp-editor', 'wp-components' )
+    );
+
+    wp_register_style(
+        'icon-row-editor-style',
+        get_template_directory_uri() . '/css/block-icon-row-editor-style.css',
+        array( 'wp-edit-blocks' )
+    );
+
+    wp_register_style(
+        'icon-row-style',
+        get_template_directory_uri() . '/css/block-icon-row-style.css',
+        array( 'wp-edit-blocks' )
+    );
+
+    register_block_type('childress/icon-row', array(
+        'editor_script' => 'icon-row-script',
+        'editor_style'  => 'icon-row-editor-style',
+        'style'  => 'icon-row-style',
+    ) );
+}
+add_action( 'init', 'icon_row_block', 10, 0 );
+
