@@ -1,0 +1,79 @@
+@import _reset.sass
+@import _variables.sass
+
+
+body
+    +font-size(16)
+    font-family: sans-serif
+    line-height: 1.5
+
+a
+    color: $color-primary
+    text-decoration: none
+
+    &:hover
+        text-decoration: underline
+
+img
+    height: auto
+    max-width: 100%
+
+div,
+div::before, //sass-lint:disable-line force-pseudo-nesting
+div::after //sass-lint:disable-line force-pseudo-nesting
+    background-position: center center
+    background-size: cover
+
+p
+    margin-bottom: 15px
+
+///////////////////////////////////////////////////////////////////////////////
+// CONTENT                                                                   //
+///////////////////////////////////////////////////////////////////////////////
+
+.container
+    margin-left: auto
+    margin-right: auto
+    padding-left: 15px
+    padding-right: 15px
+    position: relative
+    width: 100%
+
+    &::after
+        clear: both
+        content: ' '
+        display: table
+
+    &--fluid
+        max-width: 100%
+
+    &--thin
+        width: 100%
+
+.wp-block-button
+    &__link
+        +font-size(22)
+        background-color: $color-primary
+        border: 2px solid transparent
+        border-radius: 0
+        font-weight: bold
+        padding: 10px 45px
+
+        &:hover
+            background-color: transparent
+            border-color: $color-primary
+            color: $color-primary
+            text-decoration: none
+
+    &.is-style-outline
+        .wp-block-button__link
+            background-color: transparent
+            border: 2px solid $color-primary
+            color: $color-primary
+
+            &:hover
+                background-color: $color-primary
+                color: $color-white
+                text-decoration: none
+
+@import _responsive.sass

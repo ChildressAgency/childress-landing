@@ -1,0 +1,20 @@
+// sass-lint:disable no-duplicate-properties function-name-format
+
+
+$color-primary: #f08f23
+
+$color-dark: #4d4d4d
+$color-darker: #333
+$color-shade: rgba(0, 0, 0, .5)
+
+$color-black: #000
+$color-white: #fff
+
+=font-size($size)
+    font-size: $size + px
+
+=fluid-font($min-font, $max-font, $min-viewport: 280, $max-viewport: 576)
+    font-size: calc((#{$min-font} * 1px) + #{strip-unit($max-font - $min-font)} * ((100vw - (#{$min-viewport} * 1px)) / #{strip-unit($max-viewport - $min-viewport)}))
+
+@function strip-unit($value)
+    @return $value / ($value * 0 + 1)
