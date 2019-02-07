@@ -78,19 +78,34 @@
 		add_theme_support(
 			'editor-color-palette', array(
 				array(
-					'name'		=> 'Green',
-					'slug'		=> 'green',
-					'color'		=> '#8bc53f'
+					'name'		=> 'Orange',
+					'slug'		=> 'orange',
+					'color'		=> '#f08f23'
 				),
 				array(
-					'name'		=> 'Light Green',
-					'slug'		=> 'light-green',
-					'color'		=> '#98ca50'
+					'name'		=> 'Dark Orange',
+					'slug'		=> 'dark-orange',
+					'color'		=> '#b7681f'
 				),
 				array(
 					'name'		=> 'Dark Grey',
 					'slug'		=> 'dark-grey',
-					'color'		=> '#4d4d4d'
+					'color'		=> '#5b5b5d'
+				),
+				array(
+					'name'		=> 'Light Grey',
+					'slug'		=> 'light-grey',
+					'color'		=> '#d3d3d3'
+				),
+				array(
+					'name'		=> 'Very Light Grey',
+					'slug'		=> 'very-light-grey',
+					'color'		=> '#e6e6e6'
+				),
+				array(
+					'name'		=> 'Off-White',
+					'slug'		=> 'off-white',
+					'color'		=> '#f2f2f2'
 				),
 				array(
 					'name'		=> 'Black',
