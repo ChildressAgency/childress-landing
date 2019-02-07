@@ -100,3 +100,33 @@ function icon_row_block(){
 }
 add_action( 'init', 'icon_row_block', 10, 0 );
 
+///////////////////////////////////////////////////////////////////////////////
+// ICON GRID                                                                 //
+///////////////////////////////////////////////////////////////////////////////
+function icon_grid_block(){
+    wp_register_script(
+        'icon-grid-script',
+        get_template_directory_uri() . '/js/block-icon-grid.js',
+        array( 'wp-blocks', 'wp-element', 'wp-editor', 'wp-components' )
+    );
+
+    wp_register_style(
+        'icon-grid-editor-style',
+        get_template_directory_uri() . '/css/block-icon-grid-editor-style.css',
+        array( 'wp-edit-blocks' )
+    );
+
+    wp_register_style(
+        'icon-grid-style',
+        get_template_directory_uri() . '/css/block-icon-grid-style.css',
+        array( 'wp-edit-blocks' )
+    );
+
+    register_block_type('childress/icon-grid', array(
+        'editor_script' => 'icon-grid-script',
+        'editor_style'  => 'icon-grid-editor-style',
+        'style'  => 'icon-grid-style',
+    ) );
+}
+add_action( 'init', 'icon_grid_block', 10, 0 );
+

@@ -1,0 +1,34 @@
+@import '../_variables.sass'
+
+.wp-block-childress-icon-grid
+    .editor-block-list__layout
+        display: grid
+        grid-gap: 30px
+        grid-template-columns: 1fr 1fr
+
+    .icon-grid
+        &__title
+            .editor-plain-text
+                text-align: center
+
+        &__inner
+            display: flex
+
+        &__item
+            display: block
+            padding: 0
+
+            &:hover
+                background-color: transparent
+                color: $color-black
+
+                .icon-grid
+                    &__icon
+                        img:last-of-type
+                            opacity: 1
+
+                    &__hover
+                        opacity: 1
+
+                    &__icon-title
+                        color: $color-primary
