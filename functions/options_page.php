@@ -42,7 +42,7 @@
                     <tr valign="top">
                         <th scope="row">Header Logo</th>
                         <td style="display: flex; flex-direction: column; align-items: flex-start;">
-                            <img class="header-logo" src="<?php echo get_option('header-logo'); ?>" height="100"/>
+                            <img class="logo" src="<?php echo get_option('header-logo'); ?>" height="100"/>
                             <input class="logo_url" type="text" name="header-logo" size="60" value="<?php echo get_option('header-logo'); ?>">
                             <a href="#" class="logo_upload">Set Image</a>
                         </td>
@@ -50,7 +50,7 @@
                     <tr valign="top">
                         <th scope="row">Footer Logo</th>
                         <td style="display: flex; flex-direction: column; align-items: flex-start;">
-                            <img class="footer-logo" src="<?php echo get_option('footer-logo'); ?>" height="100"/>
+                            <img class="logo" src="<?php echo get_option('footer-logo'); ?>" height="100"/>
                             <input class="logo_url" type="text" name="footer-logo" size="60" value="<?php echo get_option('footer-logo'); ?>">
                             <a href="#" class="logo_upload">Set Image</a>
                         </td>
@@ -61,6 +61,7 @@
                     jQuery(document).ready(function($) {
                         $('.logo_upload').click(function(e) {
                             e.preventDefault();
+                            $logo = $( this ).parent();
 
                             var custom_uploader = wp.media({
                                 title: 'Custom Image',
@@ -71,8 +72,8 @@
                             })
                             .on('select', function() {
                                 var attachment = custom_uploader.state().get('selection').first().toJSON();
-                                $('.logo').attr('src', attachment.url);
-                                $('.logo_url').val(attachment.url);
+                                $logo.find( '.logo' ).attr('src', attachment.url);
+                                $logo.find( '.logo_url' ).val(attachment.url);
 
                             })
                             .open();
