@@ -40,8 +40,6 @@ registerBlockType( 'childress/tabs', {
                 [ 'childress/tabs-section', { classes: `tabs-section--contents has-${ numTabs }-tabs` }, contents ]
             ];
 
-            console.log( result );
-
             return result;
         };
 

@@ -1,0 +1,76 @@
+@import '../_variables.sass'
+
+.wp-block-childress-phone-display
+    position: relative
+
+    .phone-display
+        &__bg
+            align-items: center
+            display: flex
+            flex: 1
+            height: 400px
+            justify-content: flex-end
+            position: relative
+            width: 50%
+
+        &__phone
+            align-items: center
+            display: flex
+            height: 75%
+            justify-content: center
+            position: absolute
+            transform: translateX(50%)
+            width: 100vw
+
+            z-index: 99
+
+            & > img
+                display: block
+                height: 100%
+                width: auto
+
+            &::after
+                bottom: -25%
+                content: ' '
+                display: block
+                height: 15px
+                left: 50%
+                position: absolute
+                transform: translateX(-50%)
+                width: 80%
+
+        &__info
+            display: flex
+            flex: 1
+            flex-direction: column
+            justify-content: center
+            padding: 30px 15px
+
+        &__heading
+            +font-size(34)
+            margin-bottom: 30px
+
+        &__text
+            @extend %font-avenir-next-demi
+            margin-bottom: 30px
+
+@media screen and ( min-width: 576px )
+    .wp-block-childress-phone-display
+        .phone-display
+            &__info
+                padding: 60px
+
+@media screen and ( min-width: 768px )
+    .wp-block-childress-phone-display
+        display: flex
+
+        .phone-display
+            &__bg
+                height: unset
+                width: unset
+
+            &__info
+                padding-bottom: 100px
+                padding-left: 200px
+                padding-right: 60px
+                padding-top: 100px

@@ -131,7 +131,7 @@ function icon_grid_block(){
 add_action( 'init', 'icon_grid_block', 10, 0 );
 
 ///////////////////////////////////////////////////////////////////////////////
-// Tabs                                                                      //
+// TABS                                                                      //
 ///////////////////////////////////////////////////////////////////////////////
 function tabs_block(){
     wp_register_script(
@@ -159,4 +159,34 @@ function tabs_block(){
     ) );
 }
 add_action( 'init', 'tabs_block', 10, 0 );
+
+///////////////////////////////////////////////////////////////////////////////
+// PHONE DISPLAY                                                             //
+///////////////////////////////////////////////////////////////////////////////
+function phone_display_block(){
+    wp_register_script(
+        'phone-display-script',
+        get_template_directory_uri() . '/js/block-phone-display.js',
+        array( 'wp-blocks', 'wp-element', 'wp-editor', 'wp-components' )
+    );
+
+    wp_register_style(
+        'phone-display-editor-style',
+        get_template_directory_uri() . '/css/block-phone-display-editor-style.css',
+        array( 'wp-edit-blocks' )
+    );
+
+    wp_register_style(
+        'phone-display-style',
+        get_template_directory_uri() . '/css/block-phone-display-style.css',
+        array( 'wp-edit-blocks' )
+    );
+
+    register_block_type('childress/phone-display', array(
+        'editor_script' => 'phone-display-script',
+        'editor_style'  => 'phone-display-editor-style',
+        'style'  => 'phone-display-style',
+    ) );
+}
+add_action( 'init', 'phone_display_block', 10, 0 );
 
