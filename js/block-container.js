@@ -7,42 +7,83 @@ registerBlockType( 'childress/container', {
         classes: {
             type: 'string',
             default: 'container'
+        },
+        backgroundColor: {
+            type: 'string',
+            default: 'transparent'
+        },
+        includePadding: {
+            type: 'boolean',
+            default: true
         }
     },
 
     edit( { attributes, className, setAttributes } ) {
-        const { classes } = attributes;
+        const { classes, backgroundColor, includePadding } = attributes;
+
+        function setBackgroundColor( ...args ){
+            setAttributes({ backgroundColor: args[0] });
+        }
 
         return (
             <Fragment>
                 <InspectorControls>
-                    <SelectControl
-                        label="Container Width"
-                        value={ classes ? classes : '' }
-                        options={[
+                    <PanelColorSettings
+                        title="Color Settings"
+                        colorSettings={[
                             {
-                                label: 'Full-Width',
-                                value: 'container'
-                            },
-                            {
-                                label: 'Thin',
-                                value: 'container container--thin'
+                                value: backgroundColor,
+                                onChange: setBackgroundColor,
+                                label: 'Background Color'
                             }
                         ]}
-                        onChange={ ( value ) => setAttributes({ classes: value }) }
                     />
+                    <PanelBody
+                        title="Container Options">
+                        <SelectControl
+                            label="Container Width"
+                            value={ classes ? classes : '' }
+                            options={[
+                                {
+                                    label: 'Default',
+                                    value: 'container'
+                                },
+                                {
+                                    label: 'Thin',
+                                    value: 'container container--thin'
+                                },
+                                {
+                                    label: 'Fluid',
+                                    value: 'container container--fluid'
+                                },
+                            ]}
+                            onChange={ ( value ) => setAttributes({ classes: value }) }
+                        />
+                        <ToggleControl
+                            label="Side Padding"
+                            help={ includePadding ? 'Include Side Padding' : 'Do Not Include Side Padding' }
+                            checked={ includePadding }
+                            onChange={ ( value ) => { setAttributes({ includePadding: value }) } }
+                        />
+                    </PanelBody>
                 </InspectorControls>
-                <div className={ attributes.classes }>
-                    <InnerBlocks />
+                <div className={ className + ' container-wrapper' } style={{ backgroundColor: backgroundColor }}>
+                    <div className={ classes }>
+                        <InnerBlocks />
+                    </div>
                 </div>
             </Fragment>
         );
     },
 
     save( { attributes } ) {
+        const { classes, backgroundColor, includePadding } = attributes;
+
         return (
-            <div className={ attributes.classes }>
-                <InnerBlocks.Content />
+            <div className={ 'wp-block-childress-container container-wrapper' } style={{ backgroundColor: backgroundColor }}>
+                <div className={ classes + ( includePadding ? '' : ' container--no-padding' )}>
+                    <InnerBlocks.Content />
+                </div>
             </div>
         );
     },
