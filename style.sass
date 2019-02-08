@@ -160,10 +160,11 @@ h6
 .footer
     &__address-boxes
         display: flex
+        flex-direction: column
 
     &__address-box
         flex: 1
-        padding: 75px 100px
+        padding: 30px 45px
 
         &:first-of-type
             background-color: $color-dark
@@ -204,9 +205,10 @@ h6
         background: linear-gradient(to right, $color-primary, $color-primary-dark)
         color: $color-white
         display: flex
-        height: 75px
+        flex-direction: column
         justify-content: space-between
-        padding: 0 30px
+        padding: 15px
+        text-align: center
 
     &__copyright
         +font-size(12)
@@ -217,7 +219,7 @@ h6
 
     &__logo
         flex: 1
-        height: 100%
+        height: 75px
         padding: 15px 0
         text-align: center
 
@@ -230,16 +232,20 @@ h6
         justify-content: flex-end
 
     &__social-icon
+        +font-size(25)
         align-items: center
         background-color: $color-white
         border-radius: 50%
         display: flex
-        height: 25px
+        height: 40px
         justify-content: center
-        margin-left: 15px
-        width: 25px
+        margin-left: 10px
+        width: 40px
 
         a
             color: $color-primary-dark
+
+        &:first-of-type
+            margin-left: 0
 
 @import _responsive.sass

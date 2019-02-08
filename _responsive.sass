@@ -9,6 +9,22 @@
         &--fluid
             max-width: 100%
 
+    .footer
+        &__bottom
+            flex-direction: row
+            height: 75px
+            padding: 0 30px
+            text-align: left
+
+        &__logo
+            height: 100%
+
+        &__social-icon
+            +font-size(16)
+            margin-left: 15px
+            height: 25px
+            width: 25px
+
 
 ///////////////////////////////////////////////////////////////////////////////
 // 768                                                                       //
@@ -23,6 +39,13 @@
 
         &--thin
             max-width: 576px
+
+    .footer
+        &__address-boxes
+            flex-direction: row
+
+        &__address-box
+            padding: 75px 100px
 
 
 ///////////////////////////////////////////////////////////////////////////////
