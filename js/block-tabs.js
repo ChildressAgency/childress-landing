@@ -1,4 +1,3 @@
-// const { memoize } = memize;
 const { times } = lodash;
 
 registerBlockType( 'childress/tabs', {
@@ -37,8 +36,8 @@ registerBlockType( 'childress/tabs', {
             var contents = times( tabs, () => [ 'childress/tabs-content' ] );
 
             result = [
-                [ 'childress/tabs-section', { classes: 'tabs-section--titles' }, titles ],
-                [ 'childress/tabs-section', { classes: 'tabs-section--contents' }, contents ]
+                [ 'childress/tabs-section', { classes: `tabs-section--titles has-${ numTabs }-tabs` }, titles ],
+                [ 'childress/tabs-section', { classes: `tabs-section--contents has-${ numTabs }-tabs` }, contents ]
             ];
 
             console.log( result );
@@ -62,6 +61,13 @@ registerBlockType( 'childress/tabs', {
                     </PanelBody>
                 </InspectorControls>
                 <div className={ className + " tabs" }>
+                    <h2 className="tabs__title">
+                        <PlainText
+                            value={ title }
+                            onChange={ ( value ) => { setAttributes({ title: value }) } }
+                            placeholder="Heading"
+                        />
+                    </h2>
                     <InnerBlocks
                         template={ getTabsTemplate( numTabs ) }
                         templateLock='all'
@@ -117,7 +123,9 @@ registerBlockType( 'childress/tabs-section', {
         const { classes } = attributes;
 
         return (
-            <InnerBlocks.Content />
+            <div className={ 'wp-block-childress-tabs-section ' + classes }>
+                <InnerBlocks.Content />
+            </div>
         );
     },
 } );
@@ -156,7 +164,7 @@ registerBlockType( 'childress/tabs-title', {
         const { title } = attributes;
 
         return (
-            <h3 clsasName="tab__title">{ title }</h3>
+            <h3 className="tab__title">{ title }</h3>
         );
     },
 } );

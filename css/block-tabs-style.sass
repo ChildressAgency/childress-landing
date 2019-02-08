@@ -1,7 +1,11 @@
+// sass-lint:disable no-important
+
 @import '../_variables.sass'
+
 
 .wp-block-childress-tabs
     padding: 60px 0
+
 
     .tab
         &__inner
@@ -13,3 +17,28 @@
 
         &__image
             flex: 1
+
+        &__title
+            border: 2px solid transparent
+            cursor: pointer
+            padding: 5px 15px
+            width: unset !important
+
+            &--active
+                border-color: $color-primary
+                border-radius: 50px
+
+        &__content
+            display: flex !important
+
+    .tabs-section--titles
+        margin-bottom: 60px
+
+        .slick-track
+            align-items: center
+            display: flex
+            justify-content: space-between
+            transform: none !important
+            width: 100% !important
+
+
