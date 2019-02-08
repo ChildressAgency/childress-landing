@@ -1,0 +1,83 @@
+@import '../_variables.sass'
+
+.wp-block-childress-icon-grid
+    .icon-grid
+        &__title
+            +font-size(34)
+            margin-bottom: 60px
+            text-align: center
+
+        &__inner
+            display: grid
+            grid-auto-rows: 1fr
+            grid-gap: 30px 60px
+            grid-template-columns: 1fr
+
+        &__item
+            border-radius: 15px
+            padding: 15px 20px
+            text-align: center
+            transition: background-color .3s ease, color .3s ease
+
+            &:hover
+                background-color: $color-primary
+                color: $color-white
+
+                .icon-grid
+                    &__icon
+                        img:last-of-type
+                            opacity: 0
+
+                    &__hover
+                        opacity: 1
+
+                    &__icon-title
+                        color: $color-white
+
+        &__icon
+            height: 100px
+            margin-bottom: 15px
+            margin-top: 15px
+            position: relative
+            text-align: center
+            width: 100%
+
+            img
+                height: 100%
+                transition: opacity .3s ease
+
+        &__hover
+            opacity: 0
+            position: absolute
+
+        &__icon-title
+            @extend %font-avenir-next-demi
+            color: $color-primary
+            transition: color .3s ease
+
+@media screen and ( min-width: 768px )
+    .wp-block-childress-icon-grid
+        .icon-grid
+            &__inner
+                grid-template-columns: 1fr 1fr
+
+@media screen and ( min-width: 992px )
+    .wp-block-childress-icon-grid
+        .icon-grid
+            &__item
+                align-items: center
+                display: flex
+                text-align: left
+
+            &__icon
+                flex: 1
+                height: unset
+                margin-bottom: 0
+                margin-right: 30px
+                margin-top: 0
+
+                img
+                    height: auto
+
+            &__info
+                flex: 3

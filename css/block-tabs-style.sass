@@ -1,0 +1,53 @@
+// sass-lint:disable no-important
+
+@import '../_variables.sass'
+
+
+.wp-block-childress-tabs
+    padding: 60px 0
+
+    .tabs
+        &__title
+            +font-size(34)
+            margin-bottom: 60px
+            text-align: center
+
+
+    .tab
+        &__inner
+            display: flex
+
+        &__text
+            flex: 3
+            padding-right: 60px
+
+        &__image
+            flex: 2
+
+        &__title
+            @extend %font-avenir-next-demi
+            border: 2px solid transparent
+            cursor: pointer
+            font-weight: normal
+            letter-spacing: .05em
+            padding: 10px 20px
+            width: unset !important
+
+            &--active
+                border-color: $color-primary
+                border-radius: 50px
+
+        &__content
+            display: flex !important
+
+    .tabs-section--titles
+        margin-bottom: 60px
+
+        .slick-track
+            align-items: center
+            display: flex
+            justify-content: space-between
+            transform: none !important
+            width: 100% !important
+
+

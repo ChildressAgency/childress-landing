@@ -1,0 +1,40 @@
+// sass-lint:disable nesting-depth
+
+@import '../_variables.sass'
+
+
+.wp-block-childress-hero-box
+    .hero-box
+        display: block
+        padding: 60px 15px
+
+        &__inner
+            display: flex
+
+        &__title
+            h2
+                +font-size(60)
+                color: $color-white
+                margin: 0
+
+                &:last-of-type
+                    +font-size(80)
+                    color: $color-primary
+
+            .editor-plain-text
+                text-align: right
+
+        &__info
+            h3
+                color: $color-white
+
+    .editor-plain-text
+        background-color: transparent
+
+        &::placeholder
+            color: $color-light-grey
+
+    .editor-block-list__block
+        textarea
+            &:focus
+                color: $color-white

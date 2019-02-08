@@ -1,0 +1,21 @@
+@import '../_variables.sass'
+
+
+.icon-row
+    .editor-plain-text
+        text-align: center
+
+    &__inner
+        .editor-block-list__layout
+            display: grid
+            grid-gap: 30px
+            grid-template-columns: 1fr 1fr
+
+    &__icon-title
+        .editor-plain-text
+            +font-size(16)
+            color: $color-primary
+
+    &__text
+        .editor-plain-text
+            +font-size(14)

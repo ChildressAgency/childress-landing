@@ -1,0 +1,59 @@
+// sass-lint:disable nesting-depth
+
+@import '../_variables.sass'
+
+
+.wp-block-childress-icon-row
+    text-align: center
+
+    .icon-row
+        &__title
+            +font-size(34)
+            margin-bottom: 60px
+
+        &__inner
+            display: grid
+            grid-gap: 30px
+            grid-template-columns: 1fr
+
+        &__item
+            display: flex
+            flex-direction: column
+
+            &:hover
+                .icon-row__icon
+                    img
+                        height: 150%
+
+        &__icon
+            align-items: center
+            display: flex
+            height: 100px
+            justify-content: center
+            margin-bottom: 30px
+
+            img
+                height: 100%
+                transition: height .3s ease
+
+        &__icon-title
+            @extend %font-avenir-next-demi
+            +font-size(16)
+            color: $color-primary
+            margin-bottom: 15px
+            min-height: 3em
+
+        &__text
+            +font-size(14)
+
+@media screen and ( min-width: 576px )
+    .wp-block-childress-icon-row
+        .icon-row
+            &__inner
+                grid-template-columns: repeat(2, 1fr)
+
+@media screen and ( min-width: 992px )
+    .wp-block-childress-icon-row
+        .icon-row
+            &__inner
+                grid-template-columns: repeat(4, 1fr)

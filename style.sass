@@ -1,0 +1,245 @@
+@import _reset.sass
+@import _variables.sass
+
+
+body
+    @extend %font-avenir-next
+    +font-size(16)
+    line-height: 1.5
+
+a
+    color: $color-primary
+    text-decoration: none
+
+    &:hover
+        text-decoration: underline
+
+img
+    height: auto
+    max-width: 100%
+
+div,
+div::before, //sass-lint:disable-line force-pseudo-nesting
+div::after //sass-lint:disable-line force-pseudo-nesting
+    background-position: center center
+    background-size: cover
+
+p
+    margin-bottom: 15px
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6
+    @extend %font-sansation-bold
+    letter-spacing: .1em
+
+///////////////////////////////////////////////////////////////////////////////
+// CONTENT                                                                   //
+///////////////////////////////////////////////////////////////////////////////
+
+.header
+    height: 100px
+    padding: 15px 30px
+    position: absolute
+    z-index: 99
+
+    &__brand
+        height: 100%
+
+
+///////////////////////////////////////////////////////////////////////////////
+// CONTENT                                                                   //
+///////////////////////////////////////////////////////////////////////////////
+
+.aligncenter
+    display: block
+
+.container
+    margin-left: auto
+    margin-right: auto
+    padding-left: 15px
+    padding-right: 15px
+    position: relative
+    width: 100%
+
+    &::after
+        clear: both
+        content: ' '
+        display: table
+
+    &--fluid
+        max-width: 100%
+
+    &--thin
+        width: 100%
+
+.wp-block-button
+    &__link
+        @extend %font-avenir-next-demi
+        +font-size(22)
+        background-color: $color-primary
+        border: 2px solid transparent
+        border-radius: 0
+        font-weight: bold
+        padding: 10px 45px
+        transition: background-color .3s ease, color .3s ease
+
+        &:hover
+            background-color: transparent
+            border-color: $color-primary
+            color: $color-primary
+            text-decoration: none
+
+    &.is-style-outline
+        .wp-block-button__link
+            background-color: transparent
+            border: 2px solid $color-primary
+            color: $color-primary
+
+            &:hover
+                background-color: $color-primary
+                color: $color-white
+                text-decoration: none
+
+
+.has-orange-background-color
+    background-color: $color-primary
+
+.has-orange-color
+    color: $color-primary
+
+.has-dark-orange-background-color
+    background-color: $color-primary-dark
+
+.has-dark-orange-color
+    color: $color-primary-dark
+
+.has-dark-grey-background-color
+    background-color: $color-dark
+
+.has-dark-grey-color
+    color: $color-dark
+
+.has-light-grey-background-color
+    background-color: $color-light-grey
+
+.has-light-grey-color
+    color: $color-light-grey
+
+.has-very-light-grey-background-color
+    background-color: $color-very-light-grey
+
+.has-very-light-grey-color
+    color: $color-very-light-grey
+
+.has-off-white-background-color
+    background-color: $color-offwhite
+
+.has-off-white-color
+    color: $color-offwhite
+
+.has-black-background-color
+    background-color: $color-black
+
+.has-black-color
+    color: $color-black
+
+.has-white-background-color
+    background-color: $color-white
+
+.has-white-color
+    color: $color-white
+
+///////////////////////////////////////////////////////////////////////////////
+// FOOTER                                                                    //
+///////////////////////////////////////////////////////////////////////////////
+
+.footer
+    &__address-boxes
+        display: flex
+
+    &__address-box
+        flex: 1
+        padding: 75px 100px
+
+        &:first-of-type
+            background-color: $color-dark
+            color: $color-white
+            text-align: right
+
+            a
+                color: $color-white
+
+                &:hover
+                    color: $color-primary
+
+        &:last-of-type
+            background-color: $color-very-light-grey
+            color: $color-black
+
+            a
+                color: $color-black
+
+                &:hover
+                    color: $color-primary
+
+    &__office
+        @extend %font-avenir-next-bold
+        +font-size(20)
+        letter-spacing: .1em
+        margin-bottom: 5px
+
+    &__phone,
+    &__address
+        @extend %font-avenir-next-medium
+        +font-size(16)
+        line-height: 1em
+        margin-bottom: 10px
+
+    &__bottom
+        align-items: center
+        background: linear-gradient(to right, $color-primary, $color-primary-dark)
+        color: $color-white
+        display: flex
+        height: 75px
+        justify-content: space-between
+        padding: 0 30px
+
+    &__copyright
+        +font-size(12)
+        flex: 1
+
+        p
+            margin-bottom: 0
+
+    &__logo
+        flex: 1
+        height: 100%
+        padding: 15px 0
+        text-align: center
+
+        img
+            height: 100%
+
+    &__social
+        display: flex
+        flex: 1
+        justify-content: flex-end
+
+    &__social-icon
+        align-items: center
+        background-color: $color-white
+        border-radius: 50%
+        display: flex
+        height: 25px
+        justify-content: center
+        margin-left: 15px
+        width: 25px
+
+        a
+            color: $color-primary-dark
+
+@import _responsive.sass
