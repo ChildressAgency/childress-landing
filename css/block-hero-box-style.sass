@@ -16,6 +16,7 @@
             flex-direction: column
 
         &__title
+            @extend %font-sansation
             +fluid-font(45, 85)
             color: $color-white
             flex: 1
@@ -23,6 +24,7 @@
             text-align: right
 
             &--bottom
+                @extend %font-sansation-bold
                 +fluid-font(60, 110)
                 color: $color-primary
 
@@ -31,14 +33,16 @@
             margin-top: 30px
 
         &__subtitle
+            @extend %font-avenir-next
             +fluid-font(30, 54)
             font-weight: normal
+            letter-spacing: unset
             line-height: 1.1em
             margin-bottom: 15px
 
         &__text
+            @extend %font-avenir-next-demi
             +font-size(16)
-            font-weight: bold
             margin-bottom: 30px
 
         &--full
