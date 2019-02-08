@@ -3,8 +3,8 @@
 
 
 body
+    @extend %font-avenir-next
     +font-size(16)
-    font-family: sans-serif
     line-height: 1.5
 
 a
@@ -26,6 +26,15 @@ div::after //sass-lint:disable-line force-pseudo-nesting
 
 p
     margin-bottom: 15px
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6
+    @extend %font-sansation-bold
+    letter-spacing: .1em
 
 ///////////////////////////////////////////////////////////////////////////////
 // CONTENT                                                                   //
@@ -69,6 +78,7 @@ p
 
 .wp-block-button
     &__link
+        @extend %font-avenir-next-demi
         +font-size(22)
         background-color: $color-primary
         border: 2px solid transparent
@@ -177,12 +187,14 @@ p
                     color: $color-primary
 
     &__office
+        @extend %font-avenir-next-bold
         +font-size(20)
-        font-weight: bold
+        letter-spacing: .1em
         margin-bottom: 5px
 
     &__phone,
     &__address
+        @extend %font-avenir-next-medium
         +font-size(16)
         line-height: 1em
         margin-bottom: 10px
