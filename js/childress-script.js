@@ -1,42 +1,69 @@
 $( document ).ready( function(){
 
-    $classes = $( '.tabs-section--titles' ).attr( 'class' ).split(/\s+/);
-    $numTabs = parseInt( $classes[2].substr(4, 1) );
-    $currentSlide = 0;
+    /*
+     * Manage the tabs block
+     */
+    $classes = $( '.tabs-section--titles' ).attr( 'class' ).split(/\s+/); // get classes of titles wrapper
+    $numTabs = parseInt( $classes[2].substr(4, 1) ); // number of tabs
 
-
+    // Convert both pieces of the block to sliders
     $( '.tabs-section--titles' ).slick({
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        arrows: false,
-        infinite: true
-    });
-    $( '.tabs-section--contents' ).slick({
-        slidesToShow: 1,
-        slidesToScroll: 1,
         arrows: false,
         infinite: true,
+        slidesToScroll: 1,
+        slidesToShow: 1,
+        responsive: [
+            {
+                breakpoint: 768,
+                settings: {
+                    arrows: true,
+                    asNavFor: '.tabs-section--contents'
+                }
+            }
+        ]
+    });
+    $( '.tabs-section--contents' ).slick({
+        adaptiveHeight: true,
+        arrows: false,
         autoplay: false,
-        autoplaySpeed: 3000
+        autoplaySpeed: 3000,
+        infinite: true,
+        slidesToScroll: 1,
+        slidesToShow: 1,
+        responsive: [
+            {
+                breakpoint: 768,
+                settings: {
+                    asNavFor: '.tabs-section--titles'
+                }
+            }
+        ]
     });
 
+    // set active tab each time the slider is moved
     $( '.tabs-section--contents' ).on( 'beforeChange', function( event, slick, currentSlide, nextSlide ){
         $( '.tabs-section--titles .slick-track .tab__title' ).removeClass( 'tab__title--active' );
-        $( '.tabs-section--titles .slick-track' ).find( '.tab__title:nth-child(' + ( nextSlide + 1 ) + ')' ).addClass( 'tab__title--active' );
+        $( '.tabs-section--titles .slick-track' ).find( '.tab__title:nth-child(' + ( nextSlide + 2 ) + ')' ).addClass( 'tab__title--active' );
     } );
 
-    $( '.tabs-section--titles .slick-track' ).find( '.tab__title:nth-child(1)' ).addClass( 'tab__title--active' );
+    // set first slide to active
+    $( '.tabs-section--titles .slick-track' ).find( '.tab__title:nth-child(2)' ).addClass( 'tab__title--active' );
 
+    // go to corresponding slide when one of the titles is clicked
     $( '.tab__title' ).click( function(){
         $index = $( this ).data( 'slick-index' );
 
-        $( '.tabs-section--contents' ).slick( 'slickGoTo', $index + 1, false );
+        $( '.tabs-section--contents' ).slick( 'slickGoTo', $index, false );
     } );
 
-    $( '.tabs-section--titles .slick-track' ).children().each( function(){
-        if( $( this ).data( 'slick-index' ) >= $numTabs + 1 ){
-            $( this ).css( 'display', 'none' );
-        }
+    $( window ).resize( function(){
+        if( $( window ).width() < 768 )
+            fixArrows();
     } );
-    
+
+    function fixArrows(){
+        $( '.tabs-section--titles' ).find( '.slick-prev' ).html( '<i class="fas fa-angle-left"></i>' );
+        $( '.tabs-section--titles' ).find( '.slick-next' ).html( '<i class="fas fa-angle-right"></i>' );
+    }
+    fixArrows();
 } );

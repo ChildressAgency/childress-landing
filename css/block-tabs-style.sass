@@ -1,4 +1,4 @@
-// sass-lint:disable no-important
+// sass-lint:disable no-important nesting-depth
 
 @import '../_variables.sass'
 
@@ -19,26 +19,26 @@
 
         &__text
             flex: 3
-            padding-right: 60px
+            margin-bottom: 15px
 
         &__image
             flex: 2
 
         &__title
             @extend %font-avenir-next-demi
+            +fluid-font(16, 20)
             border: 2px solid transparent
-            cursor: pointer
+            flex: 1
             font-weight: normal
             letter-spacing: .05em
             padding: 10px 20px
+            text-align: center
             width: unset !important
-
-            &--active
-                border-color: $color-primary
-                border-radius: 50px
 
         &__content
             display: flex !important
+            flex-direction: column
+            padding: 0 15px
 
     .tabs-section--titles
         margin-bottom: 60px
@@ -47,7 +47,56 @@
             align-items: center
             display: flex
             justify-content: space-between
+
+        .slick-arrow
+            +font-size(50)
+            background: transparent
+            border: 0
+            cursor: pointer
+            left: 0
+            position: absolute
+            top: 50%
+            transform: translateY(-50%)
+            z-index: 99
+
+        .slick-next
+            left: auto
+            right: 0
+
+@media screen and ( min-width: 768px )
+    .wp-block-childress-tabs
+        .tab
+            &__title
+                +font-size(20)
+
+@media screen and ( min-width: 768px )
+    .wp-block-childress-tabs
+        .tab
+            &__title
+                +font-size(18)
+                cursor: pointer
+
+                &--active
+                    border-color: $color-primary
+                    border-radius: 50px
+
+            &__content
+                flex-direction: row
+
+            &__text
+                margin-bottom: 0
+                padding-right: 60px
+
+    .tabs-section--titles
+        .slick-track
             transform: none !important
             width: 100% !important
 
+            .slick-cloned
+                display: none
 
+@media screen and ( min-width: 1200px )
+    .wp-block-childress-tabs
+        .tab
+            &__title
+                flex: unset

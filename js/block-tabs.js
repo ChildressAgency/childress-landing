@@ -114,7 +114,9 @@ registerBlockType( 'childress/tabs-section', {
 
         return (
             <div className={ className + ' ' + classes }>
-                <InnerBlocks />
+                <InnerBlocks
+                    templateLock='insert'
+                />
             </div>
         );
     },
