@@ -190,3 +190,33 @@ function phone_display_block(){
 }
 add_action( 'init', 'phone_display_block', 10, 0 );
 
+///////////////////////////////////////////////////////////////////////////////
+// LET'S START                                                               //
+///////////////////////////////////////////////////////////////////////////////
+function lets_start_block(){
+    wp_register_script(
+        'lets-start-script',
+        get_template_directory_uri() . '/js/block-lets-start.js',
+        array( 'wp-blocks', 'wp-element', 'wp-editor', 'wp-components' )
+    );
+
+    wp_register_style(
+        'lets-start-editor-style',
+        get_template_directory_uri() . '/css/block-lets-start-editor-style.css',
+        array( 'wp-edit-blocks' )
+    );
+
+    wp_register_style(
+        'lets-start-style',
+        get_template_directory_uri() . '/css/block-lets-start-style.css',
+        array( 'wp-edit-blocks' )
+    );
+
+    register_block_type('childress/lets-start', array(
+        'editor_script' => 'lets-start-script',
+        'editor_style'  => 'lets-start-editor-style',
+        'style'  => 'lets-start-style',
+    ) );
+}
+add_action( 'init', 'lets_start_block', 10, 0 );
+
