@@ -62,7 +62,7 @@ registerBlockType( 'childress/phone-display', {
                         <MediaUpload
                             label="Phone Image"
                             onSelect={ media => { setAttributes( { phoneUrl: media.url, phoneAlt: media.alt } ) } }
-                            type="phone"
+                            type="image"
                             value={ phoneUrl }
                             render={ ({ open }) => (
                                 <Button className={ phoneUrl ? 'image-button' : 'button button-large' } onClick={ open }>
@@ -75,7 +75,7 @@ registerBlockType( 'childress/phone-display', {
                         <MediaUpload
                             label="Background"
                             onSelect={ media => { setAttributes( { backgroundUrl: media.url, backgroundAlt: media.alt } ) } }
-                            type="background"
+                            type="image"
                             value={ backgroundUrl }
                             render={ ({ open }) => (
                                 <Button className='button button-large' onClick={ open }>
