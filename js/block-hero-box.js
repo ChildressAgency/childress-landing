@@ -104,7 +104,7 @@ registerBlockType( 'childress/hero-box-inner', {
     title: 'Hero Box - Inner',
     icon: 'format-image',
     category: 'custom-blocks',
-    parent: ['childress/hero-box'],
+    parent: false,
 
     attributes: {
         titleTop: {
@@ -173,11 +173,15 @@ registerBlockType( 'childress/hero-box-inner', {
         return (
             <div className="container">
                 <div className="hero-box__inner">
-                    <h2 className="hero-box__title">{ titleTop }<br/><span className="hero-box__title--bottom">{ titleBottom }</span></h2>
-                    <div className="hero-box__info">
-                        <h3 className="hero-box__subtitle">{ subtitle }</h3>
-                        <p className="hero-box__text">{ text }</p>
-                        <InnerBlocks.Content />
+                    <div className="hero-box__title-wrapper">
+                        <h2 className="hero-box__title">{ titleTop }<br/><span className="hero-box__title--bottom">{ titleBottom }</span></h2>
+                    </div>
+                    <div className="hero-box__info-wrapper">
+                        <div className="hero-box__info">
+                            <h3 className="hero-box__subtitle">{ subtitle }</h3>
+                            <p className="hero-box__text">{ text }</p>
+                            <InnerBlocks.Content />
+                        </div>
                     </div>
                 </div>
             </div>
