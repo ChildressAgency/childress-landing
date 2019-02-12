@@ -188,6 +188,7 @@ h6
         position: absolute
         right: 20px
         top: 10px
+        z-index: 99
 
 
     #multi-step-form // sass-lint:disable-line no-ids
@@ -241,7 +242,10 @@ h6
             margin: 0
 
         .fw-toggle-summary
-            display: none
+            display: none !important // sass-lint:disable-line no-important
+
+        .fw-summary-container
+            display: none !important // sass-lint:disable-line no-important
 
 
 ///////////////////////////////////////////////////////////////////////////////

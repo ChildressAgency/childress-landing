@@ -29,7 +29,7 @@
 <body>
     
     <div class="contact">
-        <div class="contact__close"><i class="fas fa-times"></i></div>
+        <div class="contact__close" style="z-index: 99"><i class="fas fa-times"></i></div>
         <?php echo do_shortcode( '[multi-step-form id="1"]' ); ?>
     </div>
 
