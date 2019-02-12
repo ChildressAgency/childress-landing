@@ -192,7 +192,7 @@ registerBlockType( 'childress/case-study', {
                                 type="image"
                                 value={ portraitUrl }
                                 render={ ({ open }) => (
-                                    <Button className={ portraitUrl ? 'portrait-button' : 'button button-large' } onClick={ open }>
+                                    <Button className={ portraitUrl ? 'image-button' : 'button button-large' } onClick={ open }>
                                         { portraitUrl ? <img src={ portraitUrl } /> : 'Set Portrait' }
                                     </Button>
                                 ) }
@@ -224,12 +224,20 @@ registerBlockType( 'childress/case-study', {
                     </div>
                 </div>
                 <div className='case-study-testimonial'>
-                    <p>{ testimonial }</p>
-                    <div className='case-study-testimonial__info'>
-                        <div className='case-study-testimonial__image'>
-                            <img src={ portraitUrl } alt={ portraitAlt } />
+                    <div className='case-study-testimonial__quotes'>
+                        <img src='wp-content\/uploads\/2019\/02\/CA_LandingPage_QuoteMarks-10.svg' alt='quotes'/>
+                    </div>
+                    <div className='case-study-testimonial__content'>
+                        <div className='case-study-testimonial__text'>
+                            <img className='case-study-testimonial__inner-quotes' src='wp-content\/uploads\/2019\/02\/CA_LandingPage_QuoteMarks-10.svg' alt='quotes'/>
+                            <p>{ testimonial }</p>
                         </div>
-                        <p>{ name }</p>
+                        <div className='case-study-testimonial__info'>
+                            <div className='case-study-testimonial__image'>
+                                <img src={ portraitUrl } alt={ portraitAlt } />
+                            </div>
+                            <p>{ name }</p>
+                        </div>
                     </div>
                 </div>
             </div>
