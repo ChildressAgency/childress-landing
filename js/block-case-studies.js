@@ -61,42 +61,6 @@ registerBlockType( 'childress/case-studies', {
 } );
 
 ///////////////////////////////////////////////////////////////////////////////
-// SLIDE                                                                     //
-///////////////////////////////////////////////////////////////////////////////
-
-// registerBlockType( 'childress/case-study-slide', {
-//     title: 'Case Study',
-//     icon: icon,
-//     category: 'custom-blocks',
-//     parent: false,
-
-//     attributes: {
-        
-//     },
-
-//     edit( { attributes, className, setAttributes } ) {
-//         return (
-//             <div className={ className + ' case-studies__slide' }>
-//                 <InnerBlocks
-//                     template={[
-//                         ['childress/case-study'],
-//                         ['childress/case-study-testimonial']
-//                     ]}
-//                 />
-//             </div>
-//         );
-//     },
-
-//     save( { attributes } ) {
-//         return (
-//             <div className={ 'wp-block-childress-case-study-slide ' }>
-//                 <InnerBlocks.Content />
-//             </div>
-//         );
-//     },
-// } );
-
-///////////////////////////////////////////////////////////////////////////////
 // CASE STUDY                                                                //
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -244,49 +208,3 @@ registerBlockType( 'childress/case-study', {
         );
     },
 } );
-
-///////////////////////////////////////////////////////////////////////////////
-// CASE STUDY TESTIMONIAL                                                    //
-///////////////////////////////////////////////////////////////////////////////
-
-// registerBlockType( 'childress/case-study-testimonial', {
-//     title: 'Case Study Testimonial',
-//     icon: icon,
-//     category: 'custom-blocks',
-//     parent: false,
-
-//     attributes: {
-//         text: {
-//             type: 'string'
-//         },
-//         name: {
-//             type: 'string'
-//         },
-//         imageUrl: {
-//             type: 'string'
-//         },
-//         imageAlt: {
-//             type: 'string'
-//         }
-//     },
-
-//     edit( { attributes, className, setAttributes } ) {
-//         const { text, name, imageUrl, imageAlt } = attributes;
-
-//         return (
-//             <div className={ className + ' case-study-testimonial' }>
-//                 <p>Testimonial</p>
-//             </div>
-//         );
-//     },
-
-//     save( { attributes } ) {
-//         const { text, name, imageUrl, imageAlt } = attributes;
-
-//         return (
-//             <div className={ 'wp-block-childress-case-study-testimonial case-study-testimonial' }>
-//                 <p>Testimonial</p>
-//             </div>
-//         );
-//     },
-// } );
