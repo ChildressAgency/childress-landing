@@ -1,6 +1,6 @@
 $( document ).ready( function(){
 
-    /*
+    /**
      * Manage the tabs block
      */
     $classes = $( '.tabs-section--titles' ).attr( 'class' );
@@ -28,7 +28,6 @@ $( document ).ready( function(){
             adaptiveHeight: true,
             arrows: false,
             autoplay: false,
-            autoplaySpeed: 3000,
             infinite: true,
             slidesToScroll: 1,
             slidesToShow: 1,
@@ -70,7 +69,6 @@ $( document ).ready( function(){
         fixArrows();
     }
 
-
     /**
      * HERO BOX ANIMATIONS
      *
@@ -90,4 +88,20 @@ $( document ).ready( function(){
             }
         } );
     } );
+
+    /**
+     * CASE STUDIES
+     *
+     * Turn the case studies section into a slider.
+     */
+    $( '.case-studies__inner' ).slick({
+        adaptiveHeight: true,
+        arrows: false,
+        autoplay: true,
+        autoplaySpeed: 10000,
+        dots: true,
+        infinite: true,
+        slidesToScroll: 1,
+        slidesToShow: 1,
+    });
 } );

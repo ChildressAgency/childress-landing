@@ -1,0 +1,16 @@
+// sass-lint:disable nesting-depth
+.wp-block-childress-case-study
+    .case-study-testimonial
+        display: block
+
+        &__image
+            button
+                &.button.button-large // sass-lint:disable-line force-element-nesting no-qualifying-elements
+                    height: 100%
+                    width: 100%
+
+                &.image-button
+                    height: 100%
+                    object-fit: cover
+                    padding: 0
+                    width: 100%
