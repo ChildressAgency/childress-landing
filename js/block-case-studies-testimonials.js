@@ -1,5 +1,5 @@
-registerBlockType( 'childress/case-studies', {
-    title: 'Case Studies',
+registerBlockType( 'childress/case-studies-testimonials', {
+    title: 'Case Studies & Testimonials',
     icon: createElement('svg', 
         { 
             width: 24,
@@ -33,9 +33,9 @@ registerBlockType( 'childress/case-studies', {
                     />
                 </h2>
                 <InnerBlocks
-                    allowedBlocks={['childress/case-study']}
+                    allowedBlocks={['childress/case-study-testimonial']}
                     template={[
-                        ['childress/case-study']
+                        ['childress/case-study-testimonial']
                     ]}
                 />
             </div>
@@ -46,7 +46,7 @@ registerBlockType( 'childress/case-studies', {
         const { heading } = attributes;
 
         return (
-            <div className="wp-block-childress-case-studies case-studies">
+            <div className="wp-block-childress-case-studies-testimonials case-studies">
                 <div className="container">
                     <h2 className="case-studies__heading">{ heading }</h2>
                     <div className="case-studies__inner">
@@ -62,8 +62,8 @@ registerBlockType( 'childress/case-studies', {
 // CASE STUDY                                                                //
 ///////////////////////////////////////////////////////////////////////////////
 
-registerBlockType( 'childress/case-study', {
-    title: 'Case Study',
+registerBlockType( 'childress/case-study-testimonial', {
+    title: 'Case Study & Testimonial',
     icon: createElement('svg', 
         { 
             width: 24,
@@ -95,10 +95,22 @@ registerBlockType( 'childress/case-study', {
         text: {
             type: 'string'
         },
+        testimonial: {
+            type: 'string'
+        },
+        portraitUrl: {
+            type: 'string'
+        },
+        portraitAlt: {
+            type: 'string'
+        },
+        name: {
+            type: 'string'
+        }
     },
 
     edit( { attributes, className, setAttributes } ) {
-        const { imageUrl, imageAlt, title, link, text, } = attributes;
+        const { imageUrl, imageAlt, title, link, text, testimonial, portraitUrl, portraitAlt, name } = attributes;
 
         return (
             <div className={ className }>
@@ -137,20 +149,68 @@ registerBlockType( 'childress/case-study', {
                         </p>
                     </div>
                 </div>
+                <div className='case-study-testimonial'>
+                    <p>
+                        <PlainText
+                            value={ testimonial }
+                            onChange={ ( value ) => { setAttributes({ testimonial: value }) } }
+                            placeholder="Testimonial"
+                        />
+                    </p>
+                    <div className='case-study-testimonial__info'>
+                        <div className='case-study-testimonial__image'>
+                            <MediaUpload
+                                label="Portrait"
+                                onSelect={ media => { setAttributes( { portraitUrl: media.url, portraitAlt: media.alt } ) } }
+                                type="image"
+                                value={ portraitUrl }
+                                render={ ({ open }) => (
+                                    <Button className={ portraitUrl ? 'image-button' : 'button button-large' } onClick={ open }>
+                                        { portraitUrl ? <img src={ portraitUrl } /> : 'Set Portrait' }
+                                    </Button>
+                                ) }
+                            />
+                        </div>
+                        <p>
+                            <PlainText
+                                value={ name }
+                                onChange={ ( value ) => { setAttributes({ name: value }) } }
+                                placeholder="Name"
+                            />
+                        </p>
+                    </div>
+                </div>
             </div>
         );
     },
 
     save( { attributes } ) {
-        const { imageUrl, imageAlt, title, link, text, } = attributes;
+        const { imageUrl, imageAlt, title, link, text, testimonial, portraitUrl, portraitAlt, name } = attributes;
 
         return (
-            <div className={ 'wp-block-childress-case-study' }>
+            <div className={ 'wp-block-childress-case-study-testimonial' }>
                 <div className='case-study'>
                     <div className='case-study__image'><img src={ imageUrl } alt={ imageAlt } /></div>
                     <div className='case-study__text'>
                         <a href={ link } class="case-study__title">{ title }</a>
                         <p>{ text }</p>
+                    </div>
+                </div>
+                <div className='case-study-testimonial'>
+                    <div className='case-study-testimonial__quotes'>
+                        <img src='wp-content\/uploads\/2019\/02\/CA_LandingPage_QuoteMarks-10.svg' alt='quotes'/>
+                    </div>
+                    <div className='case-study-testimonial__content'>
+                        <div className='case-study-testimonial__text'>
+                            <img className='case-study-testimonial__inner-quotes' src='wp-content\/uploads\/2019\/02\/CA_LandingPage_QuoteMarks-10.svg' alt='quotes'/>
+                            <p>{ testimonial }</p>
+                        </div>
+                        <div className='case-study-testimonial__info'>
+                            <div className='case-study-testimonial__image'>
+                                <img src={ portraitUrl } alt={ portraitAlt } />
+                            </div>
+                            <p>{ name }</p>
+                        </div>
                     </div>
                 </div>
             </div>
