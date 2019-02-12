@@ -28,6 +28,11 @@
 </head>
 <body>
     
+    <div class="contact">
+        <div class="contact__close"><i class="fas fa-times"></i></div>
+        <?php echo do_shortcode( '[multi-step-form id="1"]' ); ?>
+    </div>
+
     <header class="header">
         <img class="header__brand" src="<?php echo get_option( 'header-logo' ); ?>" alt="Childress Agency"/>
     </header>

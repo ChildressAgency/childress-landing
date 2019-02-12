@@ -104,4 +104,21 @@ $( document ).ready( function(){
         slidesToScroll: 1,
         slidesToShow: 1,
     });
+
+
+    /**
+     * CONTACT FORM
+     *
+     * Display the contact form whenever a contact button is pressed
+     */
+    $( 'a' ).click( function( e ){
+        if( $( this ).attr( 'href' ) == '#contact' ){
+            e.preventDefault();
+            $( '.contact' ).addClass( 'contact--show' );
+        }
+    } );
+
+    $( '.contact__close' ).click( function(){
+        $( '.contact' ).removeClass( 'contact--show' );
+    } );
 } );
