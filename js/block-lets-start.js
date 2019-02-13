@@ -22,13 +22,20 @@ registerBlockType( 'childress/lets-start', {
         backgroundUrl: {
             type: 'string'
         },
+        link: {
+            type: 'string'
+        }
     },
 
     edit( { attributes, className, setAttributes } ) {
-        const { topText, bottomText, primaryText, secondaryText, hoverText, backgroundUrl } = attributes;
+        const { topText, bottomText, primaryText, secondaryText, hoverText, backgroundUrl, link } = attributes;
 
         return (
             <div className={ className }>
+                <URLInputButton
+                    url={ link }
+                    onChange={ ( url ) => { setAttributes({ link: url }) } }
+                />
                 <p>
                     <PlainText
                         value={ topText }
@@ -80,7 +87,7 @@ registerBlockType( 'childress/lets-start', {
     },
 
     save( { attributes } ) {
-        const { topText, bottomText, primaryText, secondaryText, hoverText, backgroundUrl } = attributes;
+        const { topText, bottomText, primaryText, secondaryText, hoverText, backgroundUrl, link } = attributes;
         
         return (
             <div className='wp-block-childress-lets-start lets-start'>
@@ -90,11 +97,11 @@ registerBlockType( 'childress/lets-start', {
                         <h4>{ primaryText }</h4>
                         <p>{ secondaryText }</p>
                     </div>
-                    <div className='lets-start__hover'>
+                    <a href={ link } className='lets-start__hover'>
                         <div className='lets-start__button' style={{ backgroundImage: `url(${ backgroundUrl })` }}>
                             <div className='lets-start__button-text'>{ hoverText }</div>
                         </div>
-                    </div>
+                    </a>
                 </div>
                 <p className="lets-start__big-text lets-start__big-text--bottom">{ bottomText }</p>
             </div>
