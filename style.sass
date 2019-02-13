@@ -260,6 +260,7 @@ h6
     &__address-box
         flex: 1
         padding: 30px 45px
+        position: relative
 
         &:first-of-type
             background-color: $color-dark
@@ -272,6 +273,9 @@ h6
                 &:hover
                     color: $color-primary
 
+            .footer__hover-image
+                right: 0
+
         &:last-of-type
             background-color: $color-very-light-grey
             color: $color-black
@@ -281,6 +285,27 @@ h6
 
                 &:hover
                     color: $color-primary
+
+            .footer__hover-image
+                left: 0
+
+        &:hover
+            .footer
+                &__hover-image
+                    width: 100%
+
+    &__hover-image
+        height: 100%
+        object-fit: cover
+        position: absolute
+        top: 50%
+        transform: translateY(-50%)
+        transition: width .75s ease
+        width: 0
+
+    &__info
+        position: relative
+        z-index: 9
 
     &__office
         @extend %font-avenir-next-bold

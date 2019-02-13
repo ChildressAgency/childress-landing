@@ -2,14 +2,20 @@
     <footer class="footer">
         <div class="footer__address-boxes">
             <div class="footer__address-box">
-                <p class="footer__office"><?php echo get_option( 'office-1' ); ?></p>
-                <?php if( get_option('phone-1') ): ?><p class="footer__phone"><a href="tel:<?php echo get_option( 'phone-1' ); ?>"><?php echo get_option( 'phone-1' ); ?></a></p><?php endif; ?>
-                <?php if( get_option('address-1') ): ?><p class="footer__address"><?php echo get_option( 'address-1' ); ?></p><?php endif; ?>
+                <div class="footer__info">
+                    <p class="footer__office"><?php echo get_option( 'office-1' ); ?></p>
+                    <?php if( get_option('phone-1') ): ?><p class="footer__phone"><a href="tel:<?php echo get_option( 'phone-1' ); ?>"><?php echo get_option( 'phone-1' ); ?></a></p><?php endif; ?>
+                    <?php if( get_option('address-1') ): ?><p class="footer__address"><?php echo get_option( 'address-1' ); ?></p><?php endif; ?>
+                </div>
+                <img class="footer__hover-image wp-image-<?php echo attachment_url_to_postid( get_option( 'footer-box-image-1' ) ); ?>" src="<?php echo get_option( 'footer-box-image-1' ); ?>" />
             </div>
             <div class="footer__address-box">
-                <p class="footer__office"><?php echo get_option( 'office-2' ); ?></p>
-                <?php if( get_option('phone-2') ): ?><p class="footer__phone"><a href="tel:<?php echo get_option( 'phone-2' ); ?>"><?php echo get_option( 'phone-2' ); ?></a></p><?php endif; ?>
-                <?php if( get_option('address-2') ): ?><p class="footer__address"><?php echo get_option( 'address-2' ); ?></p><?php endif; ?>
+                <div class="footer__info">
+                    <p class="footer__office"><?php echo get_option( 'office-2' ); ?></p>
+                    <?php if( get_option('phone-2') ): ?><p class="footer__phone"><a href="tel:<?php echo get_option( 'phone-2' ); ?>"><?php echo get_option( 'phone-2' ); ?></a></p><?php endif; ?>
+                    <?php if( get_option('address-2') ): ?><p class="footer__address"><?php echo get_option( 'address-2' ); ?></p><?php endif; ?>
+                </div>
+                <img class="footer__hover-image wp-image-<?php echo attachment_url_to_postid( get_option( 'footer-box-image-2' ) ); ?>" src="<?php echo get_option( 'footer-box-image-2' ); ?>" />
             </div>
         </div>
         <div class="footer__bottom">
