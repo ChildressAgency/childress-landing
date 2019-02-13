@@ -86,6 +86,9 @@ registerBlockType( 'childress/case-study-testimonial', {
         imageAlt: {
             type: 'string'
         },
+        imageId: {
+            type: 'number'
+        },
         title: {
             type: 'string'
         },
@@ -104,13 +107,16 @@ registerBlockType( 'childress/case-study-testimonial', {
         portraitAlt: {
             type: 'string'
         },
+        portraitId: {
+            type: 'string'
+        },
         name: {
             type: 'string'
         }
     },
 
     edit( { attributes, className, setAttributes } ) {
-        const { imageUrl, imageAlt, title, link, text, testimonial, portraitUrl, portraitAlt, name } = attributes;
+        const { imageUrl, imageAlt, imageId, title, link, text, testimonial, portraitUrl, portraitAlt, portraitId, name } = attributes;
 
         return (
             <div className={ className }>
@@ -118,7 +124,7 @@ registerBlockType( 'childress/case-study-testimonial', {
                     <div className='case-study__image'>
                         <MediaUpload
                             label="Image"
-                            onSelect={ media => { setAttributes( { imageUrl: media.url, imageAlt: media.alt } ) } }
+                            onSelect={ media => { setAttributes( { imageUrl: media.url, imageAlt: media.alt, imageId: media.id } ) } }
                             type="image"
                             value={ imageUrl }
                             render={ ({ open }) => (
@@ -161,7 +167,7 @@ registerBlockType( 'childress/case-study-testimonial', {
                         <div className='case-study-testimonial__image'>
                             <MediaUpload
                                 label="Portrait"
-                                onSelect={ media => { setAttributes( { portraitUrl: media.url, portraitAlt: media.alt } ) } }
+                                onSelect={ media => { setAttributes( { portraitUrl: media.url, portraitAlt: media.alt, portraitId: media.id } ) } }
                                 type="image"
                                 value={ portraitUrl }
                                 render={ ({ open }) => (
@@ -185,12 +191,12 @@ registerBlockType( 'childress/case-study-testimonial', {
     },
 
     save( { attributes } ) {
-        const { imageUrl, imageAlt, title, link, text, testimonial, portraitUrl, portraitAlt, name } = attributes;
+        const { imageUrl, imageAlt, imageId, title, link, text, testimonial, portraitUrl, portraitAlt, portraitId, name } = attributes;
 
         return (
             <div className={ 'wp-block-childress-case-study-testimonial' }>
                 <div className='case-study'>
-                    <div className='case-study__image'><img src={ imageUrl } alt={ imageAlt } /></div>
+                    <div className='case-study__image'><img className={ 'wp-image-' + imageId } src={ imageUrl } alt={ imageAlt } /></div>
                     <div className='case-study__text'>
                         <a href={ link } className="case-study__title">{ title }</a>
                         <p>{ text }</p>
@@ -207,7 +213,7 @@ registerBlockType( 'childress/case-study-testimonial', {
                         </div>
                         <div className='case-study-testimonial__info'>
                             <div className='case-study-testimonial__image'>
-                                <img src={ portraitUrl } alt={ portraitAlt } />
+                                <img className={ 'wp-image' + portraitId } src={ portraitUrl } alt={ portraitAlt } />
                             </div>
                             <p>{ name }</p>
                         </div>

@@ -75,13 +75,16 @@ registerBlockType( 'childress/testimonial', {
         portraitAlt: {
             type: 'string'
         },
+        portraitId: {
+            type: 'number'
+        },
         name: {
             type: 'string'
         }
     },
 
     edit( { attributes, className, setAttributes } ) {
-        const { testimonial, portraitUrl, portraitAlt, name } = attributes;
+        const { testimonial, portraitUrl, portraitAlt, portraitId, name } = attributes;
 
         return (
             <div className={ className }>
@@ -97,7 +100,7 @@ registerBlockType( 'childress/testimonial', {
                         <div className='testimonial__image'>
                             <MediaUpload
                                 label="Portrait"
-                                onSelect={ media => { setAttributes( { portraitUrl: media.url, portraitAlt: media.alt } ) } }
+                                onSelect={ media => { setAttributes( { portraitUrl: media.url, portraitAlt: media.alt, portraitId: media.id } ) } }
                                 type="image"
                                 value={ portraitUrl }
                                 render={ ({ open }) => (
@@ -121,7 +124,7 @@ registerBlockType( 'childress/testimonial', {
     },
 
     save( { attributes } ) {
-        const { testimonial, portraitUrl, portraitAlt, name } = attributes;
+        const { testimonial, portraitUrl, portraitAlt, portraitId, name } = attributes;
 
         return (
             <div className={ 'wp-block-childress-testimonial' }>
@@ -136,7 +139,7 @@ registerBlockType( 'childress/testimonial', {
                         </div>
                         <div className='testimonial__info'>
                             <div className='testimonial__image'>
-                                <img src={ portraitUrl } alt={ portraitAlt } />
+                                <img className={ 'wp-image-' + portraitId } src={ portraitUrl } alt={ portraitAlt } />
                             </div>
                             <p>{ name }</p>
                         </div>

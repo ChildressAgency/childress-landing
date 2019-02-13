@@ -86,6 +86,9 @@ registerBlockType( 'childress/case-study', {
         imageAlt: {
             type: 'string'
         },
+        imageId: {
+            type: 'number'
+        },
         title: {
             type: 'string'
         },
@@ -98,7 +101,7 @@ registerBlockType( 'childress/case-study', {
     },
 
     edit( { attributes, className, setAttributes } ) {
-        const { imageUrl, imageAlt, title, link, text, } = attributes;
+        const { imageUrl, imageAlt, imageId, title, link, text, } = attributes;
 
         return (
             <div className={ className }>
@@ -106,7 +109,7 @@ registerBlockType( 'childress/case-study', {
                     <div className='case-study__image'>
                         <MediaUpload
                             label="Image"
-                            onSelect={ media => { setAttributes( { imageUrl: media.url, imageAlt: media.alt } ) } }
+                            onSelect={ media => { setAttributes( { imageUrl: media.url, imageAlt: media.alt, imageId: media.id } ) } }
                             type="image"
                             value={ imageUrl }
                             render={ ({ open }) => (
@@ -142,12 +145,12 @@ registerBlockType( 'childress/case-study', {
     },
 
     save( { attributes } ) {
-        const { imageUrl, imageAlt, title, link, text, } = attributes;
+        const { imageUrl, imageAlt, imageId, title, link, text, } = attributes;
 
         return (
             <div className={ 'wp-block-childress-case-study' }>
                 <div className='case-study'>
-                    <div className='case-study__image'><img src={ imageUrl } alt={ imageAlt } /></div>
+                    <div className='case-study__image'><img className={ 'wp-image-' + imageId } src={ imageUrl } alt={ imageAlt } /></div>
                     <div className='case-study__text'>
                         <a href={ link } class="case-study__title">{ title }</a>
                         <p>{ text }</p>
