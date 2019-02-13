@@ -119,6 +119,14 @@ $( document ).ready( function(){
         infinite: true,
         slidesToScroll: 1,
         slidesToShow: 1,
+        responsive: [
+            {
+                breakpoint: 768,
+                settings: {
+                    adaptiveHeight: true
+                }
+            }
+        ]
     });
 
 
