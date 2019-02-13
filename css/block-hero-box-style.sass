@@ -4,12 +4,25 @@
 
 
 .wp-block-childress-hero-box
+    overflow: hidden
+    position: relative
+
     .hero-box
         align-items: center
         background-color: $color-shade
         color: $color-white
         display: flex
         padding: 60px 0
+
+        &__bg
+            height: 100%
+            left: 50%
+            object-fit: cover
+            position: absolute
+            top: 50%
+            transform: translate(-50%, -50%)
+            width: 100%
+            z-index: -1
 
         &__inner
             display: flex

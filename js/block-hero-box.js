@@ -7,16 +7,11 @@ registerBlockType( 'childress/hero-box', {
         backgroundUrl: {
             type: 'string'
         },
+        backgroundAlt: {
+            type: 'string'
+        },
         backgroundId: {
             type: 'number'
-        },
-        backgroundPosX: {
-            type: 'number',
-            default: 50
-        },
-        backgroundPosY: {
-            type: 'number',
-            default: 50
         },
         isFullHeight: {
             type: 'boolean',
@@ -25,31 +20,13 @@ registerBlockType( 'childress/hero-box', {
     },
 
     edit( { attributes, className, setAttributes } ) {
-        const { backgroundUrl, backgroundId, backgroundPosX, backgroundPosY, isFullHeight } = attributes;
+        const { backgroundUrl, backgroundAlt, backgroundId, isFullHeight } = attributes;
 
         return (
             <Fragment>
                 <InspectorControls>
                     <PanelBody
-                        title="Background/Size Settings">
-                        <RangeControl
-                            label="Background X Position"
-                            value={ backgroundPosX }
-                            onChange={ ( value ) => { setAttributes({ backgroundPosX: value }) } }
-                            min={ 0 }
-                            max={ 100 }
-                        />
-                        <RangeControl
-                            label="Background Y Position"
-                            value={ backgroundPosY }
-                            onChange={ ( value ) => { setAttributes({ backgroundPosY: value }) } }
-                            min={ 0 }
-                            max={ 100 }
-                        />
-                        <p>A lower number means "closer to the top/left corner". (e.g. Y = 20 is a higher position than Y = 80)</p>
-
-                        <hr />
-
+                        title="Size Settings">
                         <ToggleControl
                             label="Full Height"
                             help={ isFullHeight ? 'Full Height' : 'Relative Height' } 
@@ -61,7 +38,7 @@ registerBlockType( 'childress/hero-box', {
                 <div className={ className } style={{ backgroundImage: `url(${ backgroundUrl })` }}>
                     <div className="hero-box">
                         <MediaUpload
-                            onSelect={ media => { setAttributes({ backgroundUrl: media.url, backgroundId: media.id }); } }
+                            onSelect={ media => { setAttributes({ backgroundUrl: media.url, backgroundAlt: media.alt, backgroundId: media.id }); } }
                             type="image"
                             value={ backgroundId }
                             render={ ({ open }) => (
@@ -86,10 +63,11 @@ registerBlockType( 'childress/hero-box', {
     },
 
     save( { attributes } ) {
-        const { backgroundUrl, backgroundId, backgroundPosX, backgroundPosY, isFullHeight } = attributes;
+        const { backgroundUrl, backgroundAlt, backgroundId, isFullHeight } = attributes;
 
         return (
-            <div style={{ backgroundImage: `url(${ backgroundUrl })`, backgroundPosition: `${ backgroundPosX }% ${ backgroundPosY }%` }}>
+            <div>
+                <img className={ 'hero-box__bg wp-image-' + backgroundId } src={ backgroundUrl } alt={ backgroundAlt } />
                 <div className={ 'hero-box' + ( isFullHeight ? ' hero-box--full' : '' ) }>
                     <InnerBlocks.Content />
                 </div>
