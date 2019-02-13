@@ -10,18 +10,16 @@ registerBlockType( 'childress/phone-display', {
         backgroundAlt: {
             type: 'string'
         },
-        backgroundPosX: {
-            type: 'number',
-            default: 50
-        },
-        backgroundPosY: {
-            type: 'number',
-            default: 50
+        backgroundId: {
+            type: 'string'
         },
         phoneUrl: {
             type: 'string'
         },
         phoneAlt: {
+            type: 'string'
+        },
+        phoneId: {
             type: 'string'
         },
         heading: {
@@ -33,35 +31,15 @@ registerBlockType( 'childress/phone-display', {
     },
 
     edit( { attributes, className, setAttributes } ) {
-        const { backgroundUrl, backgroundAlt, backgroundPosX, backgroundPosY, phoneUrl, phoneAlt, heading, text } = attributes;
+        const { backgroundUrl, backgroundAlt, backgroundId, phoneUrl, phoneAlt, phoneId, heading, text } = attributes;
 
         return (
             <Fragment>
-                <InspectorControls>
-                    <PanelBody
-                        title="Background Settings">
-                        <RangeControl
-                            label="Background X Position"
-                            value={ backgroundPosX }
-                            onChange={ ( value ) => { setAttributes({ backgroundPosX: value }) } }
-                            min={ 0 }
-                            max={ 100 }
-                        />
-                        <RangeControl
-                            label="Background Y Position"
-                            value={ backgroundPosY }
-                            onChange={ ( value ) => { setAttributes({ backgroundPosY: value }) } }
-                            min={ 0 }
-                            max={ 100 }
-                        />
-                        <p>A lower number means "closer to the top/left corner". (e.g. Y = 20 is a higher position than Y = 80)</p>
-                    </PanelBody>
-                </InspectorControls>
                 <div className={ className + ' phone-display'}>
                     <div className='phone-display__phone'>
                         <MediaUpload
                             label="Phone Image"
-                            onSelect={ media => { setAttributes( { phoneUrl: media.url, phoneAlt: media.alt } ) } }
+                            onSelect={ media => { setAttributes( { phoneUrl: media.url, phoneAlt: media.alt, phoneId: media.id } ) } }
                             type="image"
                             value={ phoneUrl }
                             render={ ({ open }) => (
@@ -71,10 +49,10 @@ registerBlockType( 'childress/phone-display', {
                             ) }
                         />
                     </div>
-                    <div className='phone-display__bg' style={{ backgroundImage: `url(${ backgroundUrl })`, backgroundPosition: `${ backgroundPosX }% ${ backgroundPosY }%` }}>
+                    <div className='phone-display__bg' style={{ backgroundImage: `url(${ backgroundUrl })` }}>
                         <MediaUpload
                             label="Background"
-                            onSelect={ media => { setAttributes( { backgroundUrl: media.url, backgroundAlt: media.alt } ) } }
+                            onSelect={ media => { setAttributes( { backgroundUrl: media.url, backgroundAlt: media.alt, backgroundId: media.id } ) } }
                             type="image"
                             value={ backgroundUrl }
                             render={ ({ open }) => (
@@ -111,13 +89,14 @@ registerBlockType( 'childress/phone-display', {
     },
 
     save( { attributes } ) {
-        const { backgroundUrl, backgroundAlt, backgroundPosX, backgroundPosY, phoneUrl, phoneAlt, heading, text } = attributes;
+        const { backgroundUrl, backgroundAlt, backgroundId, phoneUrl, phoneAlt, phoneId, heading, text } = attributes;
 
         return (
             <div className={ 'wp-block-childress-phone-display phone-display'}>
-                <div className='phone-display__bg' style={{ backgroundImage: `url(${ backgroundUrl })`, backgroundPosition: `${ backgroundPosX }% ${ backgroundPosY }%` }}>
+                <div className='phone-display__bg'>
+                    <img className={ 'phone-display__bg-image wp-image-' + backgroundId } src={ backgroundUrl } alt={ backgroundAlt } />
                     <div className='phone-display__phone'>
-                        <img src={ phoneUrl } alt={ phoneAlt } />
+                        <img className={ 'wp-image-' + phoneId } src={ phoneUrl } alt={ phoneAlt } />
                     </div>
                 </div>
                 <div className='phone-display__info'>
