@@ -98,8 +98,24 @@ $( document ).ready( function(){
         adaptiveHeight: true,
         arrows: false,
         autoplay: true,
-        autoplaySpeed: 10000,
+        autoplaySpeed: 5000,
         dots: true,
+        infinite: true,
+        slidesToScroll: 1,
+        slidesToShow: 1,
+    });
+
+    /**
+     * TESTIMONIALS
+     *
+     * Turn the testimonials section into a slider.
+     */
+    $( '.testimonials__inner' ).slick({
+        adaptiveHeight: true,
+        arrows: false,
+        autoplay: true,
+        autoplaySpeed: 5000,
+        dots: false,
         infinite: true,
         slidesToScroll: 1,
         slidesToShow: 1,

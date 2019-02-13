@@ -280,3 +280,33 @@ function case_studies_block(){
 }
 add_action( 'init', 'case_studies_block', 10, 0 );
 
+///////////////////////////////////////////////////////////////////////////////
+// TESTIMONIALS                                                              //
+///////////////////////////////////////////////////////////////////////////////
+function testimonials_block(){
+    wp_register_script(
+        'testimonials-script',
+        get_template_directory_uri() . '/js/block-testimonials.js',
+        array( 'wp-blocks', 'wp-element', 'wp-editor', 'wp-components' )
+    );
+
+    wp_register_style(
+        'testimonials-editor-style',
+        get_template_directory_uri() . '/css/block-testimonials-editor-style.css',
+        array( 'wp-edit-blocks' )
+    );
+
+    wp_register_style(
+        'testimonials-style',
+        get_template_directory_uri() . '/css/block-testimonials-style.css',
+        array( 'wp-edit-blocks' )
+    );
+
+    register_block_type('childress/testimonials', array(
+        'editor_script' => 'testimonials-script',
+        'editor_style'  => 'testimonials-editor-style',
+        'style'  => 'testimonials-style',
+    ) );
+}
+add_action( 'init', 'testimonials_block', 10, 0 );
+
