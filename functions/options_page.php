@@ -7,6 +7,7 @@
 
     function register_mysettings() { // whitelist options
         register_setting( 'theme_options', 'header-logo' );
+        register_setting( 'theme_options', 'header-logo-hover' );
         register_setting( 'theme_options', 'footer-logo' );
         register_setting( 'theme_options', 'footer-box-image-1' );
         register_setting( 'theme_options', 'footer-box-image-2' );
@@ -46,6 +47,14 @@
                         <td style="display: flex; flex-direction: column; align-items: flex-start;">
                             <img class="logo" src="<?php echo get_option('header-logo'); ?>" height="100"/>
                             <input class="logo_url" type="text" name="header-logo" size="60" value="<?php echo get_option('header-logo'); ?>">
+                            <a href="#" class="logo_upload">Set Image</a>
+                        </td>
+                    </tr>
+                    <tr valign="top">
+                        <th scope="row">Header Hover Logo</th>
+                        <td style="display: flex; flex-direction: column; align-items: flex-start;">
+                            <img class="logo" src="<?php echo get_option('header-logo-hover'); ?>" height="100"/>
+                            <input class="logo_url" type="text" name="header-logo-hover" size="60" value="<?php echo get_option('header-logo-hover'); ?>">
                             <a href="#" class="logo_upload">Set Image</a>
                         </td>
                     </tr>

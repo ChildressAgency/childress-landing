@@ -1,5 +1,17 @@
 $( document ).ready( function(){
 
+    $( window ).scroll( function(){
+        $scrollTop = $( document ).scrollTop();
+
+        if( $scrollTop ){
+            $( '.header' ).addClass( 'header--scroll' );
+            // $( '.header' ).find( 'img' ).attr( 'src', 'wp-content/uploads/2019/02/CA_LandingPage_ChildressMark-28.svg' );
+        } else {
+            $( '.header' ).removeClass( 'header--scroll' );
+            // $( '.header' ).find( 'img' ).attr( 'src', 'wp-content/uploads/2019/02/CA_Hor_Logo_White-06.svg' );
+        }
+    } );
+
     /**
      * Manage the tabs block
      */

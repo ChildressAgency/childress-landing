@@ -34,5 +34,11 @@
     </div>
 
     <header class="header">
-        <img class="header__brand" src="<?php echo get_option( 'header-logo' ); ?>" alt="Childress Agency"/>
+        <div class="header__brand">
+            <img class="header__logo header__logo--hover" src="<?php echo get_option( 'header-logo-hover' ); ?>" alt="Childress Agency"/>
+            <img class="header__logo" src="<?php echo get_option( 'header-logo' ); ?>" alt="Childress Agency"/>
+        </div>
+        <div class="header__call">
+            <a href="tel:<?php echo get_option( 'phone-1' ); ?>"><?php echo get_option( 'phone-1' ); ?></a>
+        </div>
     </header>
