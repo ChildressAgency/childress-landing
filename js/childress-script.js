@@ -1,16 +1,38 @@
 $( document ).ready( function(){
 
+    /**
+     * STICKY HEADER
+     *
+     * Morph header when the user scrolls down the page
+     */
     $( window ).scroll( function(){
         $scrollTop = $( document ).scrollTop();
 
         if( $scrollTop ){
             $( '.header' ).addClass( 'header--scroll' );
-            // $( '.header' ).find( 'img' ).attr( 'src', 'wp-content/uploads/2019/02/CA_LandingPage_ChildressMark-28.svg' );
         } else {
             $( '.header' ).removeClass( 'header--scroll' );
-            // $( '.header' ).find( 'img' ).attr( 'src', 'wp-content/uploads/2019/02/CA_Hor_Logo_White-06.svg' );
         }
     } );
+
+    /**
+     * prevent jump on mobile when user scrolls down
+     */
+    $windowWidth = 0;
+    function fixHeroJump(){
+        $tempWidth = $( window ).width();
+        if( $windowWidth == 0 || $windowWidth != $tempWidth ){
+            $( '.hero-box--full' ).each( function(){
+                $( this ).css( 'min-height', '100vh' );
+                $( this ).css( 'min-height', $( this ).outerHeight() );
+            } );
+            $windowWidth = $tempWidth;
+        }
+    }
+    $( window ).on( 'resize', function(){
+        fixHeroJump();
+    } );
+    fixHeroJump();
 
     /**
      * Manage the tabs block
