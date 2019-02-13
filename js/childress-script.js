@@ -95,7 +95,7 @@ $( document ).ready( function(){
      * Turn the case studies section into a slider.
      */
     $( '.case-studies__inner' ).slick({
-        adaptiveHeight: true,
+        adaptiveHeight: false,
         arrows: false,
         autoplay: true,
         autoplaySpeed: 5000,
@@ -111,7 +111,7 @@ $( document ).ready( function(){
      * Turn the testimonials section into a slider.
      */
     $( '.testimonials__inner' ).slick({
-        adaptiveHeight: true,
+        adaptiveHeight: false,
         arrows: false,
         autoplay: true,
         autoplaySpeed: 5000,
