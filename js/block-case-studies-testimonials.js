@@ -192,7 +192,7 @@ registerBlockType( 'childress/case-study-testimonial', {
                 <div className='case-study'>
                     <div className='case-study__image'><img src={ imageUrl } alt={ imageAlt } /></div>
                     <div className='case-study__text'>
-                        <a href={ link } class="case-study__title">{ title }</a>
+                        <a href={ link } className="case-study__title">{ title }</a>
                         <p>{ text }</p>
                     </div>
                 </div>
