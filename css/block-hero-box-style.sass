@@ -24,6 +24,27 @@
             width: 100%
             z-index: -1
 
+        &__explore
+            @extend %font-avenir-next-demi
+            bottom: 30px
+            color: $color-white
+            right: 30px
+            position: absolute
+            transform: translateY(-50%) rotate(-90deg)
+            transform-origin: left center
+
+            &::after
+                animation: explore 3s ease infinite
+                background-color: $color-white
+                content: ' '
+                display: block
+                height: 2px
+                left: -5px
+                position: absolute
+                top: 50%
+                transform: translateX(-100%)
+                width: 0
+
         &__inner
             display: flex
             flex-direction: column
@@ -98,6 +119,10 @@
                 &--bottom
                     +font-size(90)
 
+            &__explore
+                left: 50%
+                right: unset
+
             &__inner
                 flex-direction: row
 
@@ -127,4 +152,14 @@
 
                 &--bottom
                     +font-size(150)
-            
+
+
+@keyframes explore
+    0%
+        width: 0
+
+    50%
+        width: 60px
+
+    100%
+        width: 0

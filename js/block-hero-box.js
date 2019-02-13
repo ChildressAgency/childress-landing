@@ -68,6 +68,7 @@ registerBlockType( 'childress/hero-box', {
         return (
             <div>
                 <img className={ 'hero-box__bg wp-image-' + backgroundId } src={ backgroundUrl } alt={ backgroundAlt } />
+                { isFullHeight && <div className="hero-box__explore">Explore</div> }
                 <div className={ 'hero-box' + ( isFullHeight ? ' hero-box--full' : '' ) }>
                     <InnerBlocks.Content />
                 </div>
