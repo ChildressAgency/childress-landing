@@ -92,7 +92,7 @@ registerBlockType( 'childress/icon-grid-icon', {
                         value={ iconUrl }
                         render={ ({ open }) => (
                             <Button className={ iconUrl ? 'image-button' : 'button button-large' } onClick={ open }>
-                                { iconUrl ? iconUrl : 'Select Icon' }
+                                { iconUrl ? <img src={ iconUrl } /> : 'Select Icon' }
                             </Button>
                         ) }
                     />
@@ -103,7 +103,7 @@ registerBlockType( 'childress/icon-grid-icon', {
                         value={ iconHoverUrl }
                         render={ ({ open }) => (
                             <Button className={ iconHoverUrl ? 'image-button' : 'button button-large' } onClick={ open }>
-                                { iconHoverUrl ? iconHoverUrl : 'Select Hover Icon' }
+                                { iconHoverUrl ? <img src={ iconHoverUrl } /> : 'Select Hover Icon' }
                             </Button>
                         ) }
                     />
