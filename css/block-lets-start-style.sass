@@ -1,0 +1,108 @@
+// sass-lint:disable nesting-depth
+
+@import '../_variables.sass'
+
+
+.wp-block-childress-lets-start
+    .lets-start
+        &__big-text
+            @extend %font-sansation
+            +font-size(75)
+            color: $color-offwhite
+            line-height: .7em
+            margin: 0
+            overflow: hidden
+
+            &--bottom
+                text-align: right
+
+        &__inner
+            background-color: $color-darker
+
+        &__text
+            color: $color-white
+            padding: 30px 0
+            text-align: center
+
+            h4
+                +font-size(34)
+
+        &__hover
+            align-items: center
+            display: flex
+            height: 150px
+            justify-content: center
+            padding-bottom: 50px
+            text-decoration: none
+            transition: padding-bottom .3s ease
+
+            &:hover
+                text-decoration: none
+
+        &__button
+            background-color: $color-primary
+
+        &__button-text
+            @extend %font-avenir-next-bold
+            +font-size(28)
+            align-items: center
+            background-color: $color-primary
+            color: $color-white
+            display: flex
+            height: 100%
+            justify-content: center
+            padding: 10px 20px
+            text-align: center
+            transition: background-color .3s ease
+            width: 100%
+
+@media screen and ( min-width: 576px )
+    .wp-block-childress-lets-start
+        .lets-start
+            &__big-text
+                +fluid-font(75, 250, 576, 992)
+
+            &__inner
+                &:hover
+                    .lets-start
+                        &__hover
+                            padding-bottom: 0
+
+                        &__button
+                            flex-grow: 1
+                            height: 100%
+
+                        &__button-text
+                            background-color: $color-primary-translucent
+
+            &__button
+                flex: 0 1 auto
+                height: calc(1em + 40px)
+                transition: height .3s ease, flex .3s ease
+
+
+@media screen and ( min-width: 768px )
+    .wp-block-childress-lets-start
+        .lets-start
+            &__inner
+                display: flex
+
+            &__text
+                flex: 1
+                text-align: left
+
+                h4,
+                p
+                    padding-left: 60px
+                    padding-right: 15px
+
+            &__hover
+                flex: 1
+                height: unset
+                padding-bottom: unset
+
+@media screen and ( min-width: 992px )
+    .wp-block-childress-lets-start
+        .lets-start
+            &__big-text
+                +font-size(250)

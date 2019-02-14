@@ -40,8 +40,6 @@ registerBlockType( 'childress/tabs', {
                 [ 'childress/tabs-section', { classes: `tabs-section--contents has-${ numTabs }-tabs` }, contents ]
             ];
 
-            console.log( result );
-
             return result;
         };
 
@@ -114,7 +112,9 @@ registerBlockType( 'childress/tabs-section', {
 
         return (
             <div className={ className + ' ' + classes }>
-                <InnerBlocks />
+                <InnerBlocks
+                    templateLock='insert'
+                />
             </div>
         );
     },
@@ -185,11 +185,14 @@ registerBlockType( 'childress/tabs-content', {
         },
         imageAlt: {
             type: 'string'
+        },
+        imageId: {
+            type: 'number'
         }
     },
 
     edit( { attributes, className, setAttributes } ) {
-        const { imageUrl, imageAlt } = attributes;
+        const { imageUrl, imageAlt, imageId } = attributes;
 
         return (
             <div className="tab__content">
@@ -204,7 +207,7 @@ registerBlockType( 'childress/tabs-content', {
                 <div className="tab__image">
                     <MediaUpload
                         label="Icon"
-                        onSelect={ media => { setAttributes( { imageUrl: media.url, imageAlt: media.alt } ) } }
+                        onSelect={ media => { setAttributes( { imageUrl: media.url, imageAlt: media.alt, imageId: media.id } ) } }
                         type="image"
                         value={ imageUrl }
                         render={ ({ open }) => (
@@ -219,7 +222,7 @@ registerBlockType( 'childress/tabs-content', {
     },
 
     save( { attributes } ) {
-        const { imageUrl, imageAlt } = attributes;
+        const { imageUrl, imageAlt, imageId } = attributes;
 
         return (
             <div className="tab__content">
@@ -227,7 +230,7 @@ registerBlockType( 'childress/tabs-content', {
                     <InnerBlocks.Content />
                 </div>
                 <div className="tab__image">
-                    <img src={ imageUrl } alt={ imageAlt } />
+                    <img className={ 'wp-image-' + imageId } src={ imageUrl } alt={ imageAlt } />
                 </div>
             </div>
         );

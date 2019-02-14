@@ -1,3 +1,5 @@
+// sass-lint:disable nesting-depth
+
 @import _reset.sass
 @import _variables.sass
 
@@ -41,13 +43,67 @@ h6
 ///////////////////////////////////////////////////////////////////////////////
 
 .header
-    height: 100px
-    padding: 15px 30px
-    position: absolute
-    z-index: 99
+    align-items: center
+    background-color: transparent
+    display: flex
+    height: 65px
+    padding: 15px
+    position: fixed
+    top: 0
+    transition: height .3s ease, background-color .3s ease
+    width: 100%
+    z-index: 999999999
+
+    &--scroll
+        background-color: $color-primary
+        height: 45px
+        padding: 10px 15px
+
+        .header__logo
+            opacity: 0
+
+            &--hover
+                opacity: 1
 
     &__brand
+        flex: 1
         height: 100%
+        left: 0
+        position: relative
+
+    &__logo
+        height: 100%
+        position: absolute
+        transition: opacity .3s ease
+        width: auto
+
+        &--hover
+            opacity: 0
+
+    &__call
+        +font-size(18)
+        flex: 1
+        text-align: right
+
+        a
+            color: $color-white
+            position: relative
+            text-decoration: none
+
+            &::after
+                background-color: $color-white
+                bottom: -5px
+                content: ' '
+                display: block
+                height: 2px
+                position: absolute
+                right: 0
+                transition: width .3s ease
+                width: 0
+
+            &:hover
+                &::after
+                    width: 100%
 
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -76,7 +132,12 @@ h6
     &--thin
         width: 100%
 
+    &--no-padding
+        padding: 0
+
 .wp-block-button
+    z-index: 999
+
     &__link
         @extend %font-avenir-next-demi
         +font-size(22)
@@ -154,16 +215,113 @@ h6
     color: $color-white
 
 ///////////////////////////////////////////////////////////////////////////////
+// CONTACT FORM                                                              //
+///////////////////////////////////////////////////////////////////////////////
+
+.contact
+    background-color: $color-offwhite
+    border-left: 10px solid $color-primary
+    box-shadow: 2px 2px 5px $color-shade
+    left: 50%
+    margin: 0 auto
+    max-width: 500px
+    padding: 15px
+    position: fixed
+    top: 50%
+    transform: translate(50vw, -50%)
+    transition: transform .5s cubic-bezier(.68, -.55, .27, 1.55)
+    width: 100%
+    z-index: 9999
+
+    &--show
+        transform: translate(-50%, -50%)
+
+    &__close
+        +font-size(30)
+        cursor: pointer
+        position: absolute
+        right: 20px
+        top: 10px
+        z-index: 99
+
+
+    #multi-step-form // sass-lint:disable-line no-ids
+        h2
+            &.fw-step-part-title
+                +font-size(18)
+                margin: 0 !important // sass-lint:disable-line no-important
+                margin-bottom: 15px !important // sass-lint:disable-line no-important
+                opacity: 0
+
+        &.fw-large-container
+            .fw-progress-bar
+                .fw-progress-step
+                    .fw-txt-ellipsis
+                        display: none
+
+            .fw-progress-bar-container
+                margin-bottom: 20px
+                width: unset
+
+        .fw-progress-bar-container
+            display: none
+
+        .fw-progress-wrap
+            text-align: center
+
+        .fw-step-part
+            border-left: 10px solid
+            margin: 0
+            padding: 15px
+
+            & > div
+                margin: 0
+
+            &:nth-last-of-type(2)
+                margin: 0
+
+        .fw-step-block
+            margin-bottom: 15px
+
+        .fw-wizard-step-container
+            h3
+                @extend %font-avenir-next-demi
+                +font-size(14)
+                margin: 0
+
+        .fw-text-input,
+        .fw-text-input[type='text'], // sass-lint:disable-line force-attribute-nesting
+        input.msfp-registration-input // sass-lint:disable-line force-element-nesting no-qualifying-elements
+            @extend %font-avenir-next
+            +font-size(16)
+
+        .fw-wizard-step-header-container
+            height: 0
+            margin: 0
+
+        .fw-toggle-summary
+            display: none !important // sass-lint:disable-line no-important
+
+        .fw-summary-container
+            display: none !important // sass-lint:disable-line no-important
+
+        .fw-btn-submit
+            background-color: $color-primary
+
+
+///////////////////////////////////////////////////////////////////////////////
 // FOOTER                                                                    //
 ///////////////////////////////////////////////////////////////////////////////
 
 .footer
     &__address-boxes
         display: flex
+        flex-direction: column
 
     &__address-box
         flex: 1
-        padding: 75px 100px
+        padding: 30px 45px
+        position: relative
 
         &:first-of-type
             background-color: $color-dark
@@ -176,6 +334,9 @@ h6
                 &:hover
                     color: $color-primary
 
+            .footer__hover-image
+                right: 0
+
         &:last-of-type
             background-color: $color-very-light-grey
             color: $color-black
@@ -185,6 +346,27 @@ h6
 
                 &:hover
                     color: $color-primary
+
+            .footer__hover-image
+                left: 0
+
+        &:hover
+            .footer
+                &__hover-image
+                    width: 100%
+
+    &__hover-image
+        height: 100%
+        object-fit: cover
+        position: absolute
+        top: 50%
+        transform: translateY(-50%)
+        transition: width .75s ease
+        width: 0
+
+    &__info
+        position: relative
+        z-index: 9
 
     &__office
         @extend %font-avenir-next-bold
@@ -204,9 +386,10 @@ h6
         background: linear-gradient(to right, $color-primary, $color-primary-dark)
         color: $color-white
         display: flex
-        height: 75px
+        flex-direction: column
         justify-content: space-between
-        padding: 0 30px
+        padding: 15px
+        text-align: center
 
     &__copyright
         +font-size(12)
@@ -217,7 +400,7 @@ h6
 
     &__logo
         flex: 1
-        height: 100%
+        height: 75px
         padding: 15px 0
         text-align: center
 
@@ -230,16 +413,29 @@ h6
         justify-content: flex-end
 
     &__social-icon
+        +font-size(25)
         align-items: center
         background-color: $color-white
         border-radius: 50%
         display: flex
-        height: 25px
+        height: 40px
         justify-content: center
-        margin-left: 15px
-        width: 25px
+        margin-left: 10px
+        width: 40px
 
         a
+            align-items: center
             color: $color-primary-dark
+            display: flex
+            height: 100%
+            justify-content: center
+            width: 100%
+
+        &:first-of-type
+            margin-left: 0
+
+        &:hover
+            a
+                text-decoration: none
 
 @import _responsive.sass

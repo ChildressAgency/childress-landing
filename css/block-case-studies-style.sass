@@ -1,0 +1,61 @@
+// sass-lint:disable nesting-depth
+
+@import '../_variables.sass'
+
+
+.wp-block-childress-case-studies
+    .case-studies
+        &__heading
+            +font-size(34)
+            margin-bottom: 30px
+            text-align: center
+
+    .slick-dots
+        display: flex
+        justify-content: center
+        list-style: none
+        margin-top: 15px
+
+        li
+            margin-left: 15px
+
+            button
+                background-color: $color-light-grey
+                border: 0
+                border-radius: 50%
+                cursor: pointer
+                height: 25px
+                overflow: hidden
+                text-indent: -999px
+                width: 25px
+
+            &:first-of-type
+                margin-left: 0
+
+            &.slick-active
+                button
+                    background-color: $color-darker
+
+.wp-block-childress-case-study
+    .case-study
+        &__text
+            p
+                +font-size(14)
+                margin-top: 15px
+
+        &__title
+            @extend %font-avenir-next-demi
+            +font-size(16)
+
+@media screen and ( min-width: 768px )
+    .wp-block-childress-case-study
+        .case-study
+            align-items: center
+            display: flex
+
+            &__image,
+            &__text
+                flex: 1
+
+            &__text
+                margin-left: 60px

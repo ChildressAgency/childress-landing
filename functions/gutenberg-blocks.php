@@ -131,7 +131,7 @@ function icon_grid_block(){
 add_action( 'init', 'icon_grid_block', 10, 0 );
 
 ///////////////////////////////////////////////////////////////////////////////
-// Tabs                                                                      //
+// TABS                                                                      //
 ///////////////////////////////////////////////////////////////////////////////
 function tabs_block(){
     wp_register_script(
@@ -159,4 +159,154 @@ function tabs_block(){
     ) );
 }
 add_action( 'init', 'tabs_block', 10, 0 );
+
+///////////////////////////////////////////////////////////////////////////////
+// PHONE DISPLAY                                                             //
+///////////////////////////////////////////////////////////////////////////////
+function phone_display_block(){
+    wp_register_script(
+        'phone-display-script',
+        get_template_directory_uri() . '/js/block-phone-display.js',
+        array( 'wp-blocks', 'wp-element', 'wp-editor', 'wp-components' )
+    );
+
+    wp_register_style(
+        'phone-display-editor-style',
+        get_template_directory_uri() . '/css/block-phone-display-editor-style.css',
+        array( 'wp-edit-blocks' )
+    );
+
+    wp_register_style(
+        'phone-display-style',
+        get_template_directory_uri() . '/css/block-phone-display-style.css',
+        array( 'wp-edit-blocks' )
+    );
+
+    register_block_type('childress/phone-display', array(
+        'editor_script' => 'phone-display-script',
+        'editor_style'  => 'phone-display-editor-style',
+        'style'  => 'phone-display-style',
+    ) );
+}
+add_action( 'init', 'phone_display_block', 10, 0 );
+
+///////////////////////////////////////////////////////////////////////////////
+// LET'S START                                                               //
+///////////////////////////////////////////////////////////////////////////////
+function lets_start_block(){
+    wp_register_script(
+        'lets-start-script',
+        get_template_directory_uri() . '/js/block-lets-start.js',
+        array( 'wp-blocks', 'wp-element', 'wp-editor', 'wp-components' )
+    );
+
+    wp_register_style(
+        'lets-start-editor-style',
+        get_template_directory_uri() . '/css/block-lets-start-editor-style.css',
+        array( 'wp-edit-blocks' )
+    );
+
+    wp_register_style(
+        'lets-start-style',
+        get_template_directory_uri() . '/css/block-lets-start-style.css',
+        array( 'wp-edit-blocks' )
+    );
+
+    register_block_type('childress/lets-start', array(
+        'editor_script' => 'lets-start-script',
+        'editor_style'  => 'lets-start-editor-style',
+        'style'  => 'lets-start-style',
+    ) );
+}
+add_action( 'init', 'lets_start_block', 10, 0 );
+
+///////////////////////////////////////////////////////////////////////////////
+// CASE STUDIES AND TESTIMONIALS                                             //
+///////////////////////////////////////////////////////////////////////////////
+function case_studies_testimonials_block(){
+    wp_register_script(
+        'case-studies-testimonials-script',
+        get_template_directory_uri() . '/js/block-case-studies-testimonials.js',
+        array( 'wp-blocks', 'wp-element', 'wp-editor', 'wp-components' )
+    );
+
+    wp_register_style(
+        'case-studies-testimonials-editor-style',
+        get_template_directory_uri() . '/css/block-case-studies-testimonials-editor-style.css',
+        array( 'wp-edit-blocks' )
+    );
+
+    wp_register_style(
+        'case-studies-testimonials-style',
+        get_template_directory_uri() . '/css/block-case-studies-testimonials-style.css',
+        array( 'wp-edit-blocks' )
+    );
+
+    register_block_type('childress/case-studies-testimonials', array(
+        'editor_script' => 'case-studies-testimonials-script',
+        'editor_style'  => 'case-studies-testimonials-editor-style',
+        'style'  => 'case-studies-testimonials-style',
+    ) );
+}
+add_action( 'init', 'case_studies_testimonials_block', 10, 0 );
+
+///////////////////////////////////////////////////////////////////////////////
+// CASE STUDIES                                                              //
+///////////////////////////////////////////////////////////////////////////////
+function case_studies_block(){
+    wp_register_script(
+        'case-studies-script',
+        get_template_directory_uri() . '/js/block-case-studies.js',
+        array( 'wp-blocks', 'wp-element', 'wp-editor', 'wp-components' )
+    );
+
+    wp_register_style(
+        'case-studies-editor-style',
+        get_template_directory_uri() . '/css/block-case-studies-editor-style.css',
+        array( 'wp-edit-blocks' )
+    );
+
+    wp_register_style(
+        'case-studies-style',
+        get_template_directory_uri() . '/css/block-case-studies-style.css',
+        array( 'wp-edit-blocks' )
+    );
+
+    register_block_type('childress/case-studies', array(
+        'editor_script' => 'case-studies-script',
+        'editor_style'  => 'case-studies-editor-style',
+        'style'  => 'case-studies-style',
+    ) );
+}
+add_action( 'init', 'case_studies_block', 10, 0 );
+
+///////////////////////////////////////////////////////////////////////////////
+// TESTIMONIALS                                                              //
+///////////////////////////////////////////////////////////////////////////////
+function testimonials_block(){
+    wp_register_script(
+        'testimonials-script',
+        get_template_directory_uri() . '/js/block-testimonials.js',
+        array( 'wp-blocks', 'wp-element', 'wp-editor', 'wp-components' )
+    );
+
+    wp_register_style(
+        'testimonials-editor-style',
+        get_template_directory_uri() . '/css/block-testimonials-editor-style.css',
+        array( 'wp-edit-blocks' )
+    );
+
+    wp_register_style(
+        'testimonials-style',
+        get_template_directory_uri() . '/css/block-testimonials-style.css',
+        array( 'wp-edit-blocks' )
+    );
+
+    register_block_type('childress/testimonials', array(
+        'editor_script' => 'testimonials-script',
+        'editor_style'  => 'testimonials-editor-style',
+        'style'  => 'testimonials-style',
+    ) );
+}
+add_action( 'init', 'testimonials_block', 10, 0 );
 

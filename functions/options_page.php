@@ -7,7 +7,10 @@
 
     function register_mysettings() { // whitelist options
         register_setting( 'theme_options', 'header-logo' );
+        register_setting( 'theme_options', 'header-logo-hover' );
         register_setting( 'theme_options', 'footer-logo' );
+        register_setting( 'theme_options', 'footer-box-image-1' );
+        register_setting( 'theme_options', 'footer-box-image-2' );
         register_setting( 'theme_options', 'office-1' );
         register_setting( 'theme_options', 'phone-1' );
         register_setting( 'theme_options', 'address-1' );
@@ -48,10 +51,34 @@
                         </td>
                     </tr>
                     <tr valign="top">
+                        <th scope="row">Header Hover Logo</th>
+                        <td style="display: flex; flex-direction: column; align-items: flex-start;">
+                            <img class="logo" src="<?php echo get_option('header-logo-hover'); ?>" height="100"/>
+                            <input class="logo_url" type="text" name="header-logo-hover" size="60" value="<?php echo get_option('header-logo-hover'); ?>">
+                            <a href="#" class="logo_upload">Set Image</a>
+                        </td>
+                    </tr>
+                    <tr valign="top">
                         <th scope="row">Footer Logo</th>
                         <td style="display: flex; flex-direction: column; align-items: flex-start;">
                             <img class="logo" src="<?php echo get_option('footer-logo'); ?>" height="100"/>
                             <input class="logo_url" type="text" name="footer-logo" size="60" value="<?php echo get_option('footer-logo'); ?>">
+                            <a href="#" class="logo_upload">Set Image</a>
+                        </td>
+                    </tr>
+                    <tr valign="top">
+                        <th scope="row">Footer Box Image 1</th>
+                        <td style="display: flex; flex-direction: column; align-items: flex-start;">
+                            <img class="logo" src="<?php echo get_option('footer-box-image-1'); ?>" height="100"/>
+                            <input class="logo_url" type="text" name="footer-box-image-1" size="60" value="<?php echo get_option('footer-box-image-1'); ?>">
+                            <a href="#" class="logo_upload">Set Image</a>
+                        </td>
+                    </tr>
+                    <tr valign="top">
+                        <th scope="row">Footer Box Image 2</th>
+                        <td style="display: flex; flex-direction: column; align-items: flex-start;">
+                            <img class="logo" src="<?php echo get_option('footer-box-image-2'); ?>" height="100"/>
+                            <input class="logo_url" type="text" name="footer-box-image-2" size="60" value="<?php echo get_option('footer-box-image-2'); ?>">
                             <a href="#" class="logo_upload">Set Image</a>
                         </td>
                     </tr>
