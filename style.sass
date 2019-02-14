@@ -215,7 +215,7 @@ h6
     color: $color-white
 
 ///////////////////////////////////////////////////////////////////////////////
-// CONTACT FORM                                                              //
+// CONTACT                                                                   //
 ///////////////////////////////////////////////////////////////////////////////
 
 .contact
@@ -308,6 +308,109 @@ h6
         .fw-btn-submit
             background-color: $color-primary
 
+.fixed-call
+    bottom: 50px
+    display: block
+    position: fixed
+    right: 50px
+    transform: translate(-50%, -50%)
+    z-index: 9999999999
+
+
+    .back-circle
+        animation: back 2s infinite
+        animation-delay: .3s
+        background-color: $color-primary
+        border-radius: 100%
+        left: 50%
+        opacity: 0
+        position: absolute
+        top: 50%
+        transform: translate(-50%, -50%)
+
+
+    .button
+        animation: ring 2s infinite
+        background-color: $color-primary
+        border-radius: 75px
+        height: 45px
+        left: 50%
+        position: absolute
+        top: 50%
+        transform: translate(-50%, -50%)
+        width: 45px
+
+    .phone
+        animation: call 2s infinite
+        color: $color-white
+        font-size: 30px
+        left: 50%
+        position: absolute
+        top: 50%
+        transform: translate(-50%, -50%)
+
+    .front-circle
+        animation: breath 2s infinite
+        background-color: $color-white
+        border-radius: 100%
+        height: 0
+        left: 50%
+        opacity: .2
+        position: absolute
+        top: 50%
+        transform: translate(-50%, -50%)
+        width: 0
+
+@keyframes back
+    0%
+        height: 0
+        width: 0
+
+    50%
+        height: 35px
+        opacity: .4
+        width: 35px
+
+    70%
+        height: 75px
+        opacity: .1
+        width: 75px
+
+    100%
+        height: 80px
+        opacity: 0
+        width: 80px
+
+@keyframes ring
+    50%
+        height: 65px
+        width: 65px
+
+@keyframes call
+    2.5%
+        transform: translate(-30%, -50%)
+
+    5%
+        transform: translate(-70%, -50%)
+
+    7.5%
+        transform: translate(-30%, -50%)
+
+    10%
+        transform: translate(-70%, -50%)
+
+    15%
+        transform: translate(-20%, -50%)
+
+    20%
+        transform: translate(-50%, -50%)
+
+@keyframes breath
+    50%
+        height: 55px
+        width: 55px
+
+
 
 ///////////////////////////////////////////////////////////////////////////////
 // FOOTER                                                                    //
@@ -332,7 +435,7 @@ h6
                 color: $color-white
 
                 &:hover
-                    color: $color-primary
+                    color: $color-white
 
             .footer__hover-image
                 right: 0
@@ -345,7 +448,7 @@ h6
                 color: $color-black
 
                 &:hover
-                    color: $color-primary
+                    color: $color-black
 
             .footer__hover-image
                 left: 0
@@ -380,6 +483,7 @@ h6
         +font-size(16)
         line-height: 1em
         margin-bottom: 10px
+
 
     &__bottom
         align-items: center

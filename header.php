@@ -45,6 +45,13 @@
         <?php echo do_shortcode( '[multi-step-form id="1"]' ); ?>
     </div>
 
+    <a class="fixed-call" href="tel:<?php echo get_option( 'phone-1' ); ?>">
+      <div class="back-circle"></div>
+      <div class="button"></div>
+      <div class="front-circle"></div>
+      <i class="fa fa-phone phone"></i>
+    </a>
+
     <header class="header">
         <div class="header__brand">
             <img class="header__logo header__logo--hover" src="<?php echo get_option( 'header-logo-hover' ); ?>" alt="Childress Agency"/>
