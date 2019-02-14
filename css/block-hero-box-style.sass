@@ -28,10 +28,11 @@
             @extend %font-avenir-next-demi
             bottom: 30px
             color: $color-white
-            right: 30px
             position: absolute
+            right: 30px
             transform: translateY(-50%) rotate(-90deg)
             transform-origin: left center
+            display: none
 
             &::after
                 animation: explore 3s ease infinite
@@ -120,6 +121,7 @@
                     +font-size(90)
 
             &__explore
+                display: block
                 left: 50%
                 right: unset
 
