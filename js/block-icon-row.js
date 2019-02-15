@@ -87,7 +87,7 @@ registerBlockType( 'childress/icon-row-icon', {
                         value={ iconUrl }
                         render={ ({ open }) => (
                             <Button className={ iconUrl ? 'image-button' : 'button button-large' } onClick={ open }>
-                                { iconUrl ? iconUrl : 'Select Icon' }
+                                { iconUrl ? <img src={ iconUrl } /> : 'Select Icon' }
                             </Button>
                         ) }
                     />
