@@ -39,25 +39,25 @@
             a.appendChild(r);
         })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
     </script>
-    
-    <div class="contact">
-        <div class="contact__close" style="z-index: 99"><i class="fas fa-times"></i></div>
-        <?php echo do_shortcode( '[multi-step-form id="1"]' ); ?>
-    </div>
-
-    <a class="fixed-call" href="tel:<?php echo get_option( 'phone-1' ); ?>">
-      <div class="back-circle"></div>
-      <div class="button"></div>
-      <div class="front-circle"></div>
-      <i class="fa fa-phone phone"></i>
-    </a>
-
-    <header class="header">
-        <div class="header__brand">
-            <img class="header__logo header__logo--hover" src="<?php echo get_option( 'header-logo-hover' ); ?>" alt="Childress Agency"/>
-            <img class="header__logo" src="<?php echo get_option( 'header-logo' ); ?>" alt="Childress Agency"/>
+    <div class="landing-page">
+        <div class="contact">
+            <div class="contact__close" style="z-index: 99"><i class="fas fa-times"></i></div>
+            <?php echo do_shortcode( '[multi-step-form id="1"]' ); ?>
         </div>
-        <div class="header__call">
-            <a href="tel:<?php echo get_option( 'phone-1' ); ?>"><?php echo get_option( 'phone-1' ); ?></a>
-        </div>
-    </header>
+
+        <a class="fixed-call" href="tel:<?php echo get_option( 'phone-1' ); ?>">
+          <div class="back-circle"></div>
+          <div class="button"></div>
+          <div class="front-circle"></div>
+          <i class="fa fa-phone phone"></i>
+        </a>
+
+        <header class="header">
+            <div class="header__brand">
+                <img class="header__logo header__logo--hover" src="<?php echo get_option( 'header-logo-hover' ); ?>" alt="Childress Agency"/>
+                <img class="header__logo" src="<?php echo get_option( 'header-logo' ); ?>" alt="Childress Agency"/>
+            </div>
+            <div class="header__call">
+                <a href="tel:<?php echo get_option( 'phone-1' ); ?>"><?php echo get_option( 'phone-1' ); ?></a>
+            </div>
+        </header>

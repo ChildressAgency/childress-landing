@@ -157,7 +157,7 @@ registerBlockType( 'childress/hero-box-inner', {
                     </div>
                     <div className="hero-box__info-wrapper">
                         <div className="hero-box__info">
-                            <h3 className="hero-box__subtitle">{ subtitle }</h3>
+                            <h1 className="hero-box__subtitle">{ subtitle }</h1>
                             <p className="hero-box__text">{ text }</p>
                             <InnerBlocks.Content />
                         </div>
