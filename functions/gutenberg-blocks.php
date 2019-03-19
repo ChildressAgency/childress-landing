@@ -310,3 +310,33 @@ function testimonials_block(){
 }
 add_action( 'init', 'testimonials_block', 10, 0 );
 
+///////////////////////////////////////////////////////////////////////////////
+// SECTION HEADING                                                           //
+///////////////////////////////////////////////////////////////////////////////
+function section_heading_block(){
+    wp_register_script(
+        'section-heading-script',
+        get_template_directory_uri() . '/js/block-section-heading.js',
+        array( 'wp-blocks', 'wp-element', 'wp-editor', 'wp-components' )
+    );
+
+    wp_register_style(
+        'section-heading-editor-style',
+        get_template_directory_uri() . '/css/block-section-heading-editor-style.css',
+        array( 'wp-edit-blocks' )
+    );
+
+    wp_register_style(
+        'section-heading-style',
+        get_template_directory_uri() . '/css/block-section-heading-style.css',
+        array( 'wp-edit-blocks' )
+    );
+
+    register_block_type('childress/section-heading', array(
+        'editor_script' => 'section-heading-script',
+        'editor_style'  => 'section-heading-editor-style',
+        'style'  => 'section-heading-style',
+    ) );
+}
+add_action( 'init', 'section_heading_block', 10, 0 );
+

@@ -179,4 +179,23 @@ $( document ).ready( function(){
     $( '.contact__close' ).click( function(){
         $( '.contact' ).removeClass( 'contact--show' );
     } );
+
+
+    /**
+     * SECTION HEADING
+     */
+    function resizeSectionHeading(){
+        $headings = $( '.section-heading h2' );
+        $headings.each( function(){
+            $( this ).textFit({maxFontSize: 250});
+            $newSize = $( this ).find( '.textfitted' ).css( 'font-size' );
+            // console.log( $newSize );
+            $( this ).css( 'font-size', $newSize );
+        } );
+    }
+    resizeSectionHeading();
+
+    $( window ).resize( function(){
+        resizeSectionHeading();
+    } );
 } );

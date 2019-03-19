@@ -27,8 +27,16 @@
 			'', 
 			true
 		);
+		wp_register_script(
+			'text-fit', 
+			'/wp-content/themes/childress/js/jquery.textFit.min.js', 
+			array('jquery'), 
+			'', 
+			true
+		);
 		
 		wp_enqueue_script( 'slick-script' );
+		wp_enqueue_script( 'text-fit' );
 		wp_enqueue_script( 'childress-script' );
 	}
 	add_action('wp_enqueue_scripts', 'childress_scripts', 100);
