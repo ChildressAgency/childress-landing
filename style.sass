@@ -167,6 +167,30 @@
                     color: $color-white
                     text-decoration: none
 
+    .wp-block-media-text
+        display: flex
+
+        h3
+            +font-size(26)
+            color: $color-primary
+            margin-bottom: 15px
+
+        &.is-stacked-on-mobile
+            flex-direction: column
+
+        &__media
+            align-items: center
+            display: flex
+            flex: 1
+            justify-content: center
+
+            img
+                width: unset
+
+        &__content
+            flex: 1
+            padding: 15px
+
 
     .has-orange-background-color
         background-color: $color-primary
