@@ -96,6 +96,11 @@
 					'color'		=> '#b7681f'
 				),
 				array(
+					'name'		=> 'Pink',
+					'slug'		=> 'pink',
+					'color'		=> '#ed1968'
+				),
+				array(
 					'name'		=> 'Dark Grey',
 					'slug'		=> 'dark-grey',
 					'color'		=> '#5b5b5d'
