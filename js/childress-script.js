@@ -198,4 +198,20 @@ $( document ).ready( function(){
     $( window ).resize( function(){
         resizeSectionHeading();
     } );
+
+
+    /**
+     * MEDIA & TEXT SLIDER
+     */
+    $( '.media-text-slider' ).slick({
+        adaptiveHeight: true,
+        arrows: true,
+        autoplay: false,
+        dots: false,
+        infinite: true,
+        slidesToScroll: 1,
+        slidesToShow: 1,
+        prevArrow: '<i class="fas fa-angle-left slick-arrow-prev"></i>',
+        nextArrow: '<i class="fas fa-angle-right slick-arrow-next"></i>',
+    });
 } );
