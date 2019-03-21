@@ -371,7 +371,7 @@ function media_text_slider_block(){
 add_action( 'init', 'media_text_slider_block', 10, 0 );
 
 ///////////////////////////////////////////////////////////////////////////////
-// MEDIA & TEXT SLIDER                                                       //
+// SERVICES                                                                  //
 ///////////////////////////////////////////////////////////////////////////////
 function services_block(){
     wp_register_script(
@@ -399,4 +399,34 @@ function services_block(){
     ) );
 }
 add_action( 'init', 'services_block', 10, 0 );
+
+///////////////////////////////////////////////////////////////////////////////
+// GRADIENT BOX                                                              //
+///////////////////////////////////////////////////////////////////////////////
+function gradient_box_block(){
+    wp_register_script(
+        'gradient-box-script',
+        get_template_directory_uri() . '/js/block-gradient-box.js',
+        array( 'wp-blocks', 'wp-element', 'wp-editor', 'wp-components' )
+    );
+
+    wp_register_style(
+        'gradient-box-editor-style',
+        get_template_directory_uri() . '/css/block-gradient-box-editor-style.css',
+        array( 'wp-edit-blocks' )
+    );
+
+    wp_register_style(
+        'gradient-box-style',
+        get_template_directory_uri() . '/css/block-gradient-box-style.css',
+        array( 'wp-edit-blocks' )
+    );
+
+    register_block_type('childress/gradient-box', array(
+        'editor_script' => 'gradient-box-script',
+        'editor_style'  => 'gradient-box-editor-style',
+        'style'  => 'gradient-box-style',
+    ) );
+}
+add_action( 'init', 'gradient_box_block', 10, 0 );
 
