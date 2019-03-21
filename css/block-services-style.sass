@@ -5,6 +5,7 @@
 
 .wp-block-childress-services
     background-color: $color-darker
+    counter-reset: service
     display: flex
     flex-direction: column
     justify-content: center
@@ -79,14 +80,28 @@
             color: $color-white
             opacity: 0
             padding: 30px 60px
+            padding-left: 120px
+            pointer-events: none
             position: absolute
             right: 0
             top: 50%
             transform: translateY(-50%)
             transition: opacity .3s ease
 
+            &::before
+                @extend %font-sansation-bold
+                +font-size(50)
+                content: counter(service, decimal-leading-zero) // sass-lint:disable-line function-name-format
+                counter-increment: service
+                left: 30px
+                opacity: .2
+                position: absolute
+                top: 50%
+                transform: translateY(-50%)
+
             &--selected
                 opacity: 1
+                pointer-events: auto
 
             .service__title
                 color: $color-primary
