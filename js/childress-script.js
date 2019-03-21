@@ -244,15 +244,35 @@ $( document ).ready( function(){
     });
 
     // make the services box big enough for all of the content
-    $( '.wp-block-childress-services' ).each( function(){
-        $servicesHeight = 0;
+    function resizeServices(){
+        $( '.wp-block-childress-services' ).each( function(){
+            $servicesHeight = 0;
+            $titlesHeight = 0;
 
-        $( '.wp-block-childress-service' ).each( function(){
-            if( $servicesHeight < $( this ).find( '.service__content' ).outerHeight() )
-                $servicesHeight = $( this ).find( '.service__content' ).outerHeight();
+            $( '.wp-block-childress-service' ).each( function(){
+                if( $servicesHeight < $( this ).find( '.service__content' ).outerHeight() )
+                    $servicesHeight = $( this ).find( '.service__content' ).outerHeight();
+
+                $titlesHeight += $( this ).outerHeight();
+            } );
+
+            // account for padding
+            $titlesHeight += 60;
+
+            // adjust height for mobile layout
+            if( $( window ).width() < 768 )
+                $servicesHeight += 100;
+
+            if( $servicesHeight > $titlesHeight )
+                $( this ).css( 'height', $servicesHeight + 'px' );
+            else
+                $( this ).css( 'height', $titlesHeight + 'px' );
         } );
+    }
+    resizeServices();
 
-        $( this ).css( 'height', $servicesHeight + 'px' );
+    $( window ).resize( function(){
+        resizeServices();
     } );
 
     // close all services

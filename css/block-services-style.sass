@@ -18,14 +18,14 @@
             +font-size(50)
             align-items: center
             display: flex
-            height: 100%
+            height: 100px
             justify-content: space-around
             left: 0
             opacity: 0
             pointer-events: none
             position: absolute
             top: 0
-            width: 50%
+            width: 100%
             z-index: 99
 
             &--selected
@@ -51,25 +51,25 @@
             padding-left: 5px
 
 .wp-block-childress-service
-    .service
-        &__title,
-        &__content
-            width: 50%
+    &:last-of-type
+        .service__title
+            margin-bottom: 0
 
+    .service
         &__title
             +font-size(34)
             color: $color-light-grey
             cursor: pointer
+            line-height: 1em
+            margin-bottom: 30px
             opacity: 1
             position: relative
             transition: color .3s ease, opacity .3s ease
+            width: 100%
             z-index: 99
 
             &:hover
                 color: $color-white
-
-                & ~ .service__img
-                    width: 30%
 
             &--selected
                 color: $color-white
@@ -79,25 +79,24 @@
         &__content
             color: $color-white
             opacity: 0
-            padding: 30px 60px
-            padding-left: 120px
+            padding: 30px
+            padding-left: 90px
             pointer-events: none
             position: absolute
             right: 0
-            top: 50%
-            transform: translateY(-50%)
+            top: 100px
             transition: opacity .3s ease
+            width: 100%
 
             &::before
                 @extend %font-sansation-bold
-                +font-size(50)
+                +font-size(36)
                 content: counter(service, decimal-leading-zero) // sass-lint:disable-line function-name-format
                 counter-increment: service
-                left: 30px
+                left: 15px
                 opacity: .2
                 position: absolute
-                top: 50%
-                transform: translateY(-50%)
+                top: 21px
 
             &--selected
                 opacity: 1
@@ -110,7 +109,7 @@
         &__img
             align-items: center
             display: flex
-            height: 100%
+            height: 100px
             justify-content: center
             left: 0
             overflow: hidden
@@ -126,6 +125,7 @@
                 left: 0
                 position: absolute
                 top: 0
+                transition: background-color .3s ease
                 width: 100%
 
             img
@@ -135,10 +135,59 @@
                 object-fit: cover
                 position: absolute
                 top: 0
-                width: 50vw
+                width: 100vw
 
             &--selected
-                width: 50%
+                width: 100%
 
                 &::after
                     background-color: $color-primary-translucent
+
+@media screen and ( min-width: 768px )
+    .wp-block-childress-services
+        .services
+            &__controls
+                height: 100%
+                width: 50%
+
+    .wp-block-childress-service
+        .service
+            &__title
+                &:hover
+                    & ~ .service__img
+                        width: 30%
+
+                &--selected
+                    &:hover
+                        & ~ .service__img
+                            width: 0
+
+            &__img
+                height: 100%
+
+                img
+                    width: 50vw
+
+                &--selected
+                    width: 50%
+
+            &__content
+                top: 50%
+                transform: translateY(-50%)
+                width: 50%
+
+                &::before
+                    +font-size(50)
+                    top: 50%
+                    transform: translateY(-50%)
+
+
+@media screen and ( min-width: 992px )
+    .wp-block-childress-service
+        .service
+            &__content
+                padding-left: 120px
+                padding-right: 60px
+
+                &::before
+                    left: 30px
