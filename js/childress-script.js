@@ -214,4 +214,86 @@ $( document ).ready( function(){
         prevArrow: '<i class="fas fa-angle-left slick-arrow-prev"></i>',
         nextArrow: '<i class="fas fa-angle-right slick-arrow-next"></i>',
     });
+
+
+    /**
+     * SERVICES
+     */
+
+    // deselect all services
+    function deselectServices(){
+        $( '.service' ).removeClass( 'service--selected' );
+        $( '.service__title' ).removeClass( 'service__title--selected' );
+        $( '.service__img' ).removeClass( 'service__img--selected' );
+        $( '.service__content' ).removeClass( 'service__content--selected' );
+
+        $( '.services__controls' ).removeClass( 'services__controls--selected' );
+    }
+
+    // select a service
+    $( '.service__title' ).click(function(){
+        deselectServices();
+
+        $( this ).parent().addClass( 'service--selected' );
+        $( this ).addClass( 'service__title--selected' );
+        $( this ).parent().siblings().children('.service__title').addClass( 'service__title--selected' );
+        $( this ).siblings( '.service__img' ).addClass( 'service__img--selected' );
+        $( this ).siblings( '.service__content' ).addClass( 'service__content--selected' );
+
+        $( this ).parent().siblings( '.services__controls' ).addClass( 'services__controls--selected' );
+    });
+
+    // make the services box big enough for all of the content
+    $( '.wp-block-childress-services' ).each( function(){
+        $servicesHeight = 0;
+
+        $( '.wp-block-childress-service' ).each( function(){
+            if( $servicesHeight < $( this ).find( '.service__content' ).outerHeight() )
+                $servicesHeight = $( this ).find( '.service__content' ).outerHeight();
+        } );
+
+        $( this ).css( 'height', $servicesHeight + 'px' );
+    } );
+
+    // close all services
+    $( '.services__close' ).click( function(){
+        deselectServices();
+    } );
+
+    // select the next service
+    $( '.services__next' ).click( function(){
+        $selected = $( '.service--selected' );
+        $next = $selected.next();
+
+        if( $next.length == 0 ){
+            $next = $selected.siblings( '.service' )[0];
+        }
+
+        $selected.removeClass( 'service--selected' );
+        $selected.find( '.service__img' ).removeClass( 'service__img--selected' );
+        $selected.find( '.service__content' ).removeClass( 'service__content--selected' );
+
+        $( $next ).addClass( 'service--selected' );
+        $( $next ).find( '.service__img' ).addClass( 'service__img--selected' );
+        $( $next ).find( '.service__content' ).addClass( 'service__content--selected' );
+    } );
+
+    // select the previous service
+    $( '.services__prev' ).click( function(){
+        $selected = $( '.service--selected' );
+        $prev = $selected.prev( '.service' );
+
+        if( $prev.length == 0 ){
+            $siblings = $selected.siblings( '.service' );
+            $prev = $siblings[$siblings.length - 1];
+        }
+
+        $selected.removeClass( 'service--selected' );
+        $selected.find( '.service__img' ).removeClass( 'service__img--selected' );
+        $selected.find( '.service__content' ).removeClass( 'service__content--selected' );
+
+        $( $prev ).addClass( 'service--selected' );
+        $( $prev ).find( '.service__img' ).addClass( 'service__img--selected' );
+        $( $prev ).find( '.service__content' ).addClass( 'service__content--selected' );
+    } );
 } );

@@ -39,6 +39,17 @@ registerBlockType( 'childress/services', {
     save( { attributes } ) {
         return (
             <section className='services'>
+                <div className='services__controls'>
+                    <div className='services__control services__prev'>
+                        <i class="fas fa-angle-left"></i>
+                    </div>
+                    <div className='services__control services__close'>
+                        <i class="fas fa-times"></i>
+                    </div>
+                    <div className='services__control services__next'>
+                        <i class="fas fa-angle-right"></i>
+                    </div>
+                </div>
                 <InnerBlocks.Content />
             </section>
         );
@@ -121,7 +132,11 @@ registerBlockType( 'childress/service', {
         return (
             <div className='service'>
                 <h3 className='service__title'>{ title }</h3>
+                <div className='service__img'>
+                    <img src={ imageUrl } alt={ imageAlt } className={ 'wp-image-' + imageId } />
+                </div>
                 <div className='service__content'>
+                    <h3 className='service__title'>{ title }</h3>
                     <InnerBlocks.Content />
                 </div>
             </div>
