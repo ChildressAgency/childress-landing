@@ -16,17 +16,39 @@ registerBlockType( 'childress/hero-box', {
         isFullHeight: {
             type: 'boolean',
             default: false
-        }
+        },
+        style: {
+            type: 'string',
+            default: 'default'
+        },
+        tiltImageUrl: {
+            type: 'string'
+        },
+        tiltImageAlt: {
+            type: 'string'
+        },
+        tiltImageId: {
+            type: 'string'
+        },
     },
 
     edit( { attributes, className, setAttributes } ) {
-        const { backgroundUrl, backgroundAlt, backgroundId, isFullHeight } = attributes;
+        const { backgroundUrl, backgroundAlt, backgroundId, isFullHeight, style, tiltImageUrl, tiltImageAlt, tiltImageId } = attributes;
 
         return (
             <Fragment>
                 <InspectorControls>
                     <PanelBody
                         title="Size Settings">
+                        <SelectControl
+                            label='Style'
+                            value={ style }
+                            options={[
+                                { label: 'Default', value: 'default' },
+                                { label: 'Animated', value: 'animated' },
+                            ]}
+                            onChange={ ( value ) => { setAttributes({ style: value }) } }
+                        />
                         <ToggleControl
                             label="Full Height"
                             help={ isFullHeight ? 'Full Height' : 'Relative Height' } 
@@ -35,43 +57,79 @@ registerBlockType( 'childress/hero-box', {
                         />
                     </PanelBody>
                 </InspectorControls>
-                <div className={ className } style={{ backgroundImage: `url(${ backgroundUrl })` }}>
-                    <div className="hero-box">
-                        <MediaUpload
-                            onSelect={ media => { setAttributes({ backgroundUrl: media.url, backgroundAlt: media.alt, backgroundId: media.id }); } }
-                            type="image"
-                            value={ backgroundId }
-                            render={ ({ open }) => (
-                                <Button className={ 'button button-large' } onClick={ open }>
-                                    { 'Set Background' }
-                                </Button>
-                            ) }
-                        />
-                        <div className="hero-box__inner">
-                            <InnerBlocks
-                                allowedBlocks={['childress/hero-box-inner']}
-                                template={[
-                                    ['childress/hero-box-inner']
-                                ]}
-                                templateLock='all'
+                { 
+                    style=='default' &&
+                    <div className={ className } style={{ backgroundImage: `url(${ backgroundUrl })` }}>
+                        <div className="hero-box">
+                            <MediaUpload
+                                onSelect={ media => { setAttributes({ backgroundUrl: media.url, backgroundAlt: media.alt, backgroundId: media.id }); } }
+                                type="image"
+                                value={ backgroundId }
+                                render={ ({ open }) => (
+                                    <Button className={ 'button button-large' } onClick={ open }>
+                                        { 'Set Background' }
+                                    </Button>
+                                ) }
+                            />
+                            <div className="hero-box__inner">
+                                <InnerBlocks
+                                    allowedBlocks={['childress/hero-box-inner']}
+                                    template={[
+                                        ['childress/hero-box-inner']
+                                    ]}
+                                    templateLock='all'
+                                />
+                            </div>
+                        </div>
+                    </div>
+                }
+                {
+                    style == 'animated' &&
+                    <div className={ className }>
+                        <div className="hero-box">
+                            <MediaUpload
+                                onSelect={ media => { setAttributes({ tiltImageUrl: media.url, tiltImageAlt: media.alt, tiltImageId: media.id }); } }
+                                type="image"
+                                value={ tiltImageId }
+                                render={ ({ open }) => (
+                                    <Button className={ tiltImageId ? 'image-button' : 'button button-large' } onClick={ open }>
+                                        { tiltImageId ? <img src={ tiltImageUrl } /> : 'Set Image' }
+                                    </Button>
+                                ) }
                             />
                         </div>
                     </div>
-                </div>
+                }
             </Fragment>
         );
     },
 
     save( { attributes } ) {
-        const { backgroundUrl, backgroundAlt, backgroundId, isFullHeight } = attributes;
+        const { backgroundUrl, backgroundAlt, backgroundId, isFullHeight, style, tiltImageUrl, tiltImageAlt, tiltImageId } = attributes;
 
         return (
             <div>
-                <img className={ 'hero-box__bg wp-image-' + backgroundId } src={ backgroundUrl } alt={ backgroundAlt } />
-                { isFullHeight && <div className="hero-box__explore">Explore</div> }
-                <div className={ 'hero-box' + ( isFullHeight ? ' hero-box--full' : '' ) }>
-                    <InnerBlocks.Content />
-                </div>
+                {
+                    style == 'default' &&
+                    <div>
+                        <img className={ 'hero-box__bg wp-image-' + backgroundId } src={ backgroundUrl } alt={ backgroundAlt } />
+                        { isFullHeight && <div className="hero-box__explore">Explore</div> }
+                        <div className={ 'hero-box' + ( isFullHeight ? " hero-box--full" : "" ) }>
+                            <InnerBlocks.Content />
+                        </div>
+                    </div>
+                }
+                {
+                    style == 'animated' &&
+                    <div>
+                        { isFullHeight && <div className="hero-box__explore">Explore</div> }
+                        <div className={ 'hero-box' + ( isFullHeight ? " hero-box--full" : "" ) }>
+                            <div className='hero-box--tilt'>
+                                <img src={ tiltImageUrl } alt={ tiltImageAlt } className={ 'wp-image-' + tiltImageId } />
+                            </div>
+                        </div>
+                    </div>
+                }
             </div>
         );
     },

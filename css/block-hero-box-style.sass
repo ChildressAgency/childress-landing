@@ -14,6 +14,19 @@
         display: flex
         padding: 60px 0
 
+        &--full
+            height: 100vh
+
+        &--tilt
+            align-items: center
+            display: flex
+            height: 100%
+            justify-content: center
+            width: 100%
+
+            img
+                width: 35vw
+
         &__bg
             height: 100%
             left: 50%
@@ -28,11 +41,11 @@
             @extend %font-avenir-next-demi
             bottom: 30px
             color: $color-white
+            display: none
             position: absolute
             right: 30px
             transform: translateY(-50%) rotate(-90deg)
             transform-origin: left center
-            display: none
 
             &::after
                 animation: explore 3s ease infinite
@@ -92,9 +105,6 @@
             @extend %font-avenir-next-demi
             +font-size(16)
             margin-bottom: 30px
-
-        &--full
-            min-height: 100vh
 
         &__show
             width: 100%

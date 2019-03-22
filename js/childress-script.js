@@ -24,13 +24,18 @@ $( document ).ready( function(){
         if( $windowWidth == 0 || $windowWidth != $tempWidth ){
             $( '.hero-box--full' ).each( function(){
                 $( this ).css( 'min-height', '100vh' );
-                $( this ).css( 'min-height', $( this ).outerHeight() );
+                $( this ).css( 'height', 'unset' );
+                $( this ).css( 'height', $( this ).outerHeight() );
+                $( this ).css( 'min-height', 'unset' );
             } );
             $windowWidth = $tempWidth;
         }
     }
     $( window ).on( 'resize', function(){
-        fixHeroJump();
+        $tempWidth = $( window ).width();
+        if( $windowWidth == 0 || $windowWidth != $tempWidth ){
+            fixHeroJump();
+        }
     } );
     fixHeroJump();
 
@@ -106,7 +111,7 @@ $( document ).ready( function(){
     /**
      * HERO BOX ANIMATIONS
      *
-     * Handle the slide in effects for hero boxes
+     * Handle the animations for hero boxes
      */
     $heroes = $( '.wp-block-childress-hero-box' );
     $heroes.first().find( '.hero-box__title' ).css( 'transform', 'translateX(0)' );
@@ -122,6 +127,10 @@ $( document ).ready( function(){
             }
         } );
     } );
+
+    // rotate image to follow mouse
+    $( '.hero-box--tilt' ).tilt();
+
 
     /**
      * CASE STUDIES
