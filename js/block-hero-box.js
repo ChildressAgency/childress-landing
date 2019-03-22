@@ -28,7 +28,7 @@ registerBlockType( 'childress/hero-box', {
             type: 'string'
         },
         tiltImageId: {
-            type: 'string'
+            type: 'number'
         },
     },
 
