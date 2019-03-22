@@ -253,13 +253,13 @@ registerBlockType( 'childress/hero-word-wall-word', {
         const { text } = attributes;
 
         return (
-            <span className={ className + ' hero-box__word-wall-word' }>
+            <p className={ className + ' hero-box__word-wall-word' }>
                 <PlainText
                     value={ text }
                     onChange={ ( value ) => { setAttributes({ text: value }) } }
                     placeholder="Word"
                 />
-            </span>
+            </p>
         );
     },
 
@@ -267,7 +267,7 @@ registerBlockType( 'childress/hero-word-wall-word', {
         const { text } = attributes;
 
         return (
-            <span className='hero-box__word-wall-word'>{ text }</span>
+            <p className='hero-box__word-wall-word'>{ text }</p>
         );
     },
 } );
