@@ -77,7 +77,6 @@ registerBlockType( 'childress/hero-box', {
                                     template={[
                                         ['childress/hero-box-inner']
                                     ]}
-                                    templateLock='all'
                                 />
                             </div>
                         </div>
@@ -98,6 +97,15 @@ registerBlockType( 'childress/hero-box', {
                                 ) }
                             />
                         </div>
+                        <InnerBlocks
+                            allowedBlocks={['childress/hero-word-wall-word']}
+                            template={[
+                                ['childress/hero-word-wall-word'],
+                                ['childress/hero-word-wall-word'],
+                                ['childress/hero-word-wall-word'],
+                            ]}
+                            templateLock={ false }
+                        />
                     </div>
                 }
             </Fragment>
@@ -124,6 +132,9 @@ registerBlockType( 'childress/hero-box', {
                     <div>
                         { isFullHeight && <div className="hero-box__explore">Explore</div> }
                         <div className={ 'hero-box' + ( isFullHeight ? " hero-box--full" : "" ) }>
+                            <div className='hero-box__word-wall'>
+                                <InnerBlocks.Content />
+                            </div>
                             <div className='hero-box--tilt'>
                                 <img src={ tiltImageUrl } alt={ tiltImageAlt } className={ 'wp-image-' + tiltImageId } />
                             </div>
@@ -222,6 +233,41 @@ registerBlockType( 'childress/hero-box-inner', {
                     </div>
                 </div>
             </div>
+        );
+    },
+} );
+
+registerBlockType( 'childress/hero-word-wall-word', {
+    title: 'Word',
+    icon: 'format-image',
+    category: 'custom-blocks',
+    parent: false,
+
+    attributes: {
+        text: {
+            type: 'string'
+        }
+    },
+
+    edit( { attributes, className, setAttributes } ) {
+        const { text } = attributes;
+
+        return (
+            <span className={ className + ' hero-box__word-wall-word' }>
+                <PlainText
+                    value={ text }
+                    onChange={ ( value ) => { setAttributes({ text: value }) } }
+                    placeholder="Word"
+                />
+            </span>
+        );
+    },
+
+    save( { attributes } ) {
+        const { text } = attributes;
+
+        return (
+            <span className='hero-box__word-wall-word'>{ text }</span>
         );
     },
 } );

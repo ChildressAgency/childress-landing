@@ -40,6 +40,24 @@ $( document ).ready( function(){
     fixHeroJump();
 
     /**
+     * HERO WORD WALL
+     */
+    $( '.hero-box__word-wall' ).each( function(){
+        $words = $( this ).children();
+        $prev = $words[0];
+        setInterval( function(){
+            var rand = Math.floor( Math.random() * $words.length );
+
+            $( $prev ).removeClass( 'hero-box__word-wall-highlight' );
+            
+            $( $words[rand] ).addClass( 'hero-box__word-wall-highlight' );
+            $prev = $words[rand];
+        }, 3000 );
+    } );
+
+    /**
+     * TABS
+     *
      * Manage the tabs block
      */
     $classes = $( '.tabs-section--titles' ).attr( 'class' );
