@@ -2,8 +2,6 @@
  * Tilt.js
  *
  * source: https://github.com/gijsroge/tilt.js
- *
- * Modified to reverse tilt direction and continue tilt on mouse leave.
  */
 
 (function (factory) {
@@ -132,7 +130,6 @@
             // angle
             const angle = Math.atan2(this.mousePositions.x - (left+width/2),- (this.mousePositions.y - (top+height/2)) )*(180/Math.PI);
             // Return x & y tilt values
-            // return {tiltX, tiltY, 'percentageX': percentageX * 100, 'percentageY': percentageY * 100, angle};
             return {tiltX, tiltY, 'percentageX': percentageX * 100, 'percentageY': percentageY * 100, angle};
         };
 
@@ -284,7 +281,7 @@
 
             // Add deprecation warning & set disableAxis to deprecated axis setting
             if(this.settings.axis !== null){
-                // console.warn('Tilt.js: the axis setting has been renamed to disableAxis. See https://github.com/gijsroge/tilt.js/pull/26 for more information');
+                console.warn('Tilt.js: the axis setting has been renamed to disableAxis. See https://github.com/gijsroge/tilt.js/pull/26 for more information');
                 this.settings.disableAxis = this.settings.axis;
             }
 

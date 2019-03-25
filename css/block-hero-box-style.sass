@@ -17,7 +17,7 @@
         &--full
             height: 100vh
 
-        &--tilt
+        &__tilt
             align-items: center
             display: flex
             height: 100%
@@ -26,7 +26,8 @@
             z-index: 9
 
             img
-                width: 35vw
+                // width: 35vw
+                width: 75vw
 
         &__bg
             height: 100%
@@ -112,7 +113,7 @@
 
         &__word-wall
             @extend %font-sansation
-            +font-size(70)
+            +fluid-font(50, 70, 280, 768)
             background-color: $color-word-wall-bg
             height: 100%
             left: 0
@@ -121,6 +122,9 @@
             text-align: center
             top: 0
             width: 120vw
+
+        &__word-wall-line
+            white-space: nowrap
 
         &__word-wall-word
             color: $color-word-wall-word
@@ -131,8 +135,7 @@
             transition: color 1.5s ease
 
         &__word-wall-highlight
-            // color: $color-word-wall-highlight
-            color: #333
+            color: $color-word-wall-highlight
 
 @media screen and ( min-width: 576px )
     .wp-block-childress-hero-box
@@ -149,6 +152,10 @@
 @media screen and ( min-width: 768px )
     .wp-block-childress-hero-box
         .hero-box
+            &__tilt
+                img
+                    width: 45vw
+
             &__title
                 +font-size(80)
 
@@ -168,6 +175,9 @@
 
             &__info
                 margin-top: 80px
+
+            &__word-wall
+                +font-size(70)
 
 @media screen and ( min-width: 992px )
     .wp-block-childress-hero-box

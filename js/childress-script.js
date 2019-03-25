@@ -43,7 +43,8 @@ $( document ).ready( function(){
      * HERO WORD WALL
      */
     $( '.hero-box__word-wall' ).each( function(){
-        $words = $( this ).children();
+        $lines = $( this ).children();
+        $words = $( $lines ).children();
         $prev = $words[0];
         setInterval( function(){
             var rand = Math.floor( Math.random() * $words.length );
@@ -147,7 +148,7 @@ $( document ).ready( function(){
     } );
 
     // rotate image to follow mouse
-    $( '.hero-box--tilt' ).tilt();
+    $( '.hero-box__tilt' ).tilt();
 
 
     /**

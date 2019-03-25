@@ -98,11 +98,11 @@ registerBlockType( 'childress/hero-box', {
                             />
                         </div>
                         <InnerBlocks
-                            allowedBlocks={['childress/hero-word-wall-word']}
+                            allowedBlocks={['childress/hero-word-wall-line']}
                             template={[
-                                ['childress/hero-word-wall-word'],
-                                ['childress/hero-word-wall-word'],
-                                ['childress/hero-word-wall-word'],
+                                ['childress/hero-word-wall-line'],
+                                ['childress/hero-word-wall-line'],
+                                ['childress/hero-word-wall-line'],
                             ]}
                             templateLock={ false }
                         />
@@ -135,7 +135,7 @@ registerBlockType( 'childress/hero-box', {
                             <div className='hero-box__word-wall'>
                                 <InnerBlocks.Content />
                             </div>
-                            <div className='hero-box--tilt'>
+                            <div className='hero-box__tilt'>
                                 <img src={ tiltImageUrl } alt={ tiltImageAlt } className={ 'wp-image-' + tiltImageId } />
                             </div>
                         </div>
@@ -237,6 +237,40 @@ registerBlockType( 'childress/hero-box-inner', {
     },
 } );
 
+registerBlockType( 'childress/hero-word-wall-line', {
+    title: 'Line',
+    icon: 'format-image',
+    category: 'custom-blocks',
+    parent: false,
+
+    attributes: {
+
+    },
+
+    edit( { attributes, className, setAttributes } ) {
+        return (
+            <p className={ className + ' hero-box__word-wall-line' }>
+                <InnerBlocks
+                    allowedBlocks={['childress/hero-word-wall-word']}
+                    template={[
+                        ['childress/hero-word-wall-word'],
+                        ['childress/hero-word-wall-word'],
+                        ['childress/hero-word-wall-word'],
+                    ]}
+                />
+            </p>
+        );
+    },
+
+    save( { attributes } ) {
+        return (
+            <p className='hero-box__word-wall-line'>
+                <InnerBlocks.Content />
+            </p>
+        );
+    },
+} );
+
 registerBlockType( 'childress/hero-word-wall-word', {
     title: 'Word',
     icon: 'format-image',
@@ -253,13 +287,13 @@ registerBlockType( 'childress/hero-word-wall-word', {
         const { text } = attributes;
 
         return (
-            <p className={ className + ' hero-box__word-wall-word' }>
+            <span className={ className + ' hero-box__word-wall-word' }>
                 <PlainText
                     value={ text }
                     onChange={ ( value ) => { setAttributes({ text: value }) } }
                     placeholder="Word"
                 />
-            </p>
+            </span>
         );
     },
 
@@ -267,7 +301,7 @@ registerBlockType( 'childress/hero-word-wall-word', {
         const { text } = attributes;
 
         return (
-            <p className='hero-box__word-wall-word'>{ text }</p>
+            <span className='hero-box__word-wall-word'>{ text }</span>
         );
     },
 } );
