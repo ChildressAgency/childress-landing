@@ -310,3 +310,123 @@ function testimonials_block(){
 }
 add_action( 'init', 'testimonials_block', 10, 0 );
 
+///////////////////////////////////////////////////////////////////////////////
+// SECTION HEADING                                                           //
+///////////////////////////////////////////////////////////////////////////////
+function section_heading_block(){
+    wp_register_script(
+        'section-heading-script',
+        get_template_directory_uri() . '/js/block-section-heading.js',
+        array( 'wp-blocks', 'wp-element', 'wp-editor', 'wp-components' )
+    );
+
+    wp_register_style(
+        'section-heading-editor-style',
+        get_template_directory_uri() . '/css/block-section-heading-editor-style.css',
+        array( 'wp-edit-blocks' )
+    );
+
+    wp_register_style(
+        'section-heading-style',
+        get_template_directory_uri() . '/css/block-section-heading-style.css',
+        array( 'wp-edit-blocks' )
+    );
+
+    register_block_type('childress/section-heading', array(
+        'editor_script' => 'section-heading-script',
+        'editor_style'  => 'section-heading-editor-style',
+        'style'  => 'section-heading-style',
+    ) );
+}
+add_action( 'init', 'section_heading_block', 10, 0 );
+
+///////////////////////////////////////////////////////////////////////////////
+// MEDIA & TEXT SLIDER                                                       //
+///////////////////////////////////////////////////////////////////////////////
+function media_text_slider_block(){
+    wp_register_script(
+        'media-text-slider-script',
+        get_template_directory_uri() . '/js/block-media-text-slider.js',
+        array( 'wp-blocks', 'wp-element', 'wp-editor', 'wp-components' )
+    );
+
+    wp_register_style(
+        'media-text-slider-editor-style',
+        get_template_directory_uri() . '/css/block-media-text-slider-editor-style.css',
+        array( 'wp-edit-blocks' )
+    );
+
+    wp_register_style(
+        'media-text-slider-style',
+        get_template_directory_uri() . '/css/block-media-text-slider-style.css',
+        array( 'wp-edit-blocks' )
+    );
+
+    register_block_type('childress/media-text-slider', array(
+        'editor_script' => 'media-text-slider-script',
+        'editor_style'  => 'media-text-slider-editor-style',
+        'style'  => 'media-text-slider-style',
+    ) );
+}
+add_action( 'init', 'media_text_slider_block', 10, 0 );
+
+///////////////////////////////////////////////////////////////////////////////
+// SERVICES                                                                  //
+///////////////////////////////////////////////////////////////////////////////
+function services_block(){
+    wp_register_script(
+        'services-script',
+        get_template_directory_uri() . '/js/block-services.js',
+        array( 'wp-blocks', 'wp-element', 'wp-editor', 'wp-components' )
+    );
+
+    wp_register_style(
+        'services-editor-style',
+        get_template_directory_uri() . '/css/block-services-editor-style.css',
+        array( 'wp-edit-blocks' )
+    );
+
+    wp_register_style(
+        'services-style',
+        get_template_directory_uri() . '/css/block-services-style.css',
+        array( 'wp-edit-blocks' )
+    );
+
+    register_block_type('childress/services', array(
+        'editor_script' => 'services-script',
+        'editor_style'  => 'services-editor-style',
+        'style'  => 'services-style',
+    ) );
+}
+add_action( 'init', 'services_block', 10, 0 );
+
+///////////////////////////////////////////////////////////////////////////////
+// GRADIENT BOX                                                              //
+///////////////////////////////////////////////////////////////////////////////
+function gradient_box_block(){
+    wp_register_script(
+        'gradient-box-script',
+        get_template_directory_uri() . '/js/block-gradient-box.js',
+        array( 'wp-blocks', 'wp-element', 'wp-editor', 'wp-components' )
+    );
+
+    wp_register_style(
+        'gradient-box-editor-style',
+        get_template_directory_uri() . '/css/block-gradient-box-editor-style.css',
+        array( 'wp-edit-blocks' )
+    );
+
+    wp_register_style(
+        'gradient-box-style',
+        get_template_directory_uri() . '/css/block-gradient-box-style.css',
+        array( 'wp-edit-blocks' )
+    );
+
+    register_block_type('childress/gradient-box', array(
+        'editor_script' => 'gradient-box-script',
+        'editor_style'  => 'gradient-box-editor-style',
+        'style'  => 'gradient-box-style',
+    ) );
+}
+add_action( 'init', 'gradient_box_block', 10, 0 );
+

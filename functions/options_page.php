@@ -11,12 +11,16 @@
         register_setting( 'theme_options', 'footer-logo' );
         register_setting( 'theme_options', 'footer-box-image-1' );
         register_setting( 'theme_options', 'footer-box-image-2' );
+        register_setting( 'theme_options', 'footer-box-image-3' );
         register_setting( 'theme_options', 'office-1' );
         register_setting( 'theme_options', 'phone-1' );
         register_setting( 'theme_options', 'address-1' );
         register_setting( 'theme_options', 'office-2' );
         register_setting( 'theme_options', 'phone-2' );
         register_setting( 'theme_options', 'address-2' );
+        register_setting( 'theme_options', 'office-3' );
+        register_setting( 'theme_options', 'phone-3' );
+        register_setting( 'theme_options', 'address-3' );
         register_setting( 'theme_options', 'copyright' );
         register_setting( 'theme_options', 'facebook' );
         register_setting( 'theme_options', 'twitter' );
@@ -82,6 +86,14 @@
                             <a href="#" class="logo_upload">Set Image</a>
                         </td>
                     </tr>
+                    <tr valign="top">
+                        <th scope="row">Footer Box Image 3</th>
+                        <td style="display: flex; flex-direction: column; align-items: flex-start;">
+                            <img class="logo" src="<?php echo get_option('footer-box-image-3'); ?>" height="100"/>
+                            <input class="logo_url" type="text" name="footer-box-image-3" size="60" value="<?php echo get_option('footer-box-image-3'); ?>">
+                            <a href="#" class="logo_upload">Set Image</a>
+                        </td>
+                    </tr>
                 </table>
 
                 <script>
@@ -142,6 +154,23 @@
                     <tr valign="top">
                         <th scope="row">Address 2</th>
                         <td><input type="text" name="address-2" value="<?php echo esc_attr( get_option('address-2') ); ?>" size="60" /></td>
+                    </tr>
+                </table>
+
+                <table class="form-table">
+                    <tr valign="top">
+                        <th scope="row">Office 3</th>
+                        <td><input type="text" name="office-3" value="<?php echo esc_attr( get_option('office-3') ); ?>" size="60" /></td>
+                    </tr>
+                    
+                    <tr valign="top">
+                        <th scope="row">Phone 3</th>
+                        <td><input type="text" name="phone-3" value="<?php echo esc_attr( get_option('phone-3') ); ?>" size="60" /></td>
+                    </tr>
+
+                    <tr valign="top">
+                        <th scope="row">Address 3</th>
+                        <td><input type="text" name="address-3" value="<?php echo esc_attr( get_option('address-3') ); ?>" size="60" /></td>
                     </tr>
                 </table>
 

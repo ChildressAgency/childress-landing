@@ -1,0 +1,193 @@
+// sass-lint:disable nesting-depth
+
+@import '../_variables.sass'
+
+
+.wp-block-childress-services
+    background-color: $color-darker
+    counter-reset: service
+    display: flex
+    flex-direction: column
+    justify-content: center
+    padding: 30px
+    padding-left: 60px
+    position: relative
+
+    .services
+        &__controls
+            +font-size(50)
+            align-items: center
+            display: flex
+            height: 100px
+            justify-content: space-around
+            left: 0
+            opacity: 0
+            pointer-events: none
+            position: absolute
+            top: 0
+            width: 100%
+            z-index: 99
+
+            &--selected
+                opacity: 1
+                pointer-events: auto
+
+        &__control
+            align-items: center
+            background-color: $color-dark
+            border-radius: 50%
+            color: $color-white
+            cursor: pointer
+            display: flex
+            height: 65px
+            justify-content: center
+            opacity: .4
+            width: 65px
+
+        &__prev
+            padding-right: 5px
+
+        &__next
+            padding-left: 5px
+
+.wp-block-childress-service
+    &:last-of-type
+        .service__title
+            margin-bottom: 0
+
+    .service
+        &__title
+            +font-size(34)
+            color: $color-light-grey
+            cursor: pointer
+            line-height: 1em
+            margin-bottom: 30px
+            opacity: 1
+            position: relative
+            transition: color .3s ease, opacity .3s ease
+            width: 100%
+            z-index: 99
+
+            &:hover
+                color: $color-white
+
+            &--selected
+                color: $color-white
+                opacity: 0
+                pointer-events: none
+
+        &__content
+            color: $color-white
+            opacity: 0
+            padding: 30px
+            padding-left: 90px
+            pointer-events: none
+            position: absolute
+            right: 0
+            top: 100px
+            transition: opacity .3s ease
+            width: 100%
+
+            &::before
+                @extend %font-sansation-bold
+                +font-size(36)
+                content: counter(service, decimal-leading-zero) // sass-lint:disable-line function-name-format
+                counter-increment: service
+                left: 15px
+                opacity: .2
+                position: absolute
+                top: 21px
+
+            &--selected
+                opacity: 1
+                pointer-events: auto
+
+            .service__title
+                color: $color-primary
+                width: 100%
+
+        &__img
+            align-items: center
+            display: flex
+            height: 100px
+            justify-content: center
+            left: 0
+            overflow: hidden
+            position: absolute
+            top: 0
+            transition: width .3s ease
+            width: 0
+
+            &::after
+                background-color: $color-accent-shade
+                content: ' '
+                height: 100%
+                left: 0
+                position: absolute
+                top: 0
+                transition: background-color .3s ease
+                width: 100%
+
+            img
+                height: 100%
+                left: 0
+                max-width: unset
+                object-fit: cover
+                position: absolute
+                top: 0
+                width: 100vw
+
+            &--selected
+                width: 100%
+
+                &::after
+                    background-color: $color-primary-translucent
+
+@media screen and ( min-width: 768px )
+    .wp-block-childress-services
+        .services
+            &__controls
+                height: 100%
+                width: 50%
+
+    .wp-block-childress-service
+        .service
+            &__title
+                &:hover
+                    & ~ .service__img
+                        width: 30%
+
+                &--selected
+                    &:hover
+                        & ~ .service__img
+                            width: 0
+
+            &__img
+                height: 100%
+
+                img
+                    width: 50vw
+
+                &--selected
+                    width: 50%
+
+            &__content
+                top: 50%
+                transform: translateY(-50%)
+                width: 50%
+
+                &::before
+                    +font-size(50)
+                    top: 50%
+                    transform: translateY(-50%)
+
+
+@media screen and ( min-width: 992px )
+    .wp-block-childress-service
+        .service
+            &__content
+                padding-left: 120px
+                padding-right: 60px
+
+                &::before
+                    left: 30px

@@ -11,7 +11,7 @@ registerBlockType( 'childress/phone-display', {
             type: 'string'
         },
         backgroundId: {
-            type: 'string'
+            type: 'number'
         },
         phoneUrl: {
             type: 'string'
@@ -20,7 +20,7 @@ registerBlockType( 'childress/phone-display', {
             type: 'string'
         },
         phoneId: {
-            type: 'string'
+            type: 'number'
         },
         heading: {
             type: 'string'

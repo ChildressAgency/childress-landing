@@ -27,8 +27,24 @@
 			'', 
 			true
 		);
+		wp_register_script(
+			'text-fit', 
+			'/wp-content/themes/childress/js/jquery.textFit.min.js', 
+			array('jquery'), 
+			'', 
+			true
+		);
+		wp_register_script(
+			'tilt', 
+			'/wp-content/themes/childress/js/tilt.jquery.js', 
+			array('jquery'), 
+			'', 
+			true
+		);
 		
 		wp_enqueue_script( 'slick-script' );
+		wp_enqueue_script( 'text-fit' );
+		wp_enqueue_script( 'tilt' );
 		wp_enqueue_script( 'childress-script' );
 	}
 	add_action('wp_enqueue_scripts', 'childress_scripts', 100);
@@ -86,6 +102,11 @@
 					'name'		=> 'Dark Orange',
 					'slug'		=> 'dark-orange',
 					'color'		=> '#b7681f'
+				),
+				array(
+					'name'		=> 'Pink',
+					'slug'		=> 'pink',
+					'color'		=> '#ed1968'
 				),
 				array(
 					'name'		=> 'Dark Grey',

@@ -1,0 +1,59 @@
+// sass-lint:disable nesting-depth
+
+@import '../_variables.sass'
+
+
+.wp-block-childress-media-text-slider
+    .slick-arrow-prev,
+    .slick-arrow-next
+        +font-size(40)
+        align-items: center
+        background-color: $color-dark
+        border-radius: 50%
+        bottom: 0
+        color: $color-white
+        cursor: pointer
+        display: flex
+        height: 50px
+        justify-content: center
+        position: absolute
+        width: 50px
+        z-index: 999
+
+    .slick-arrow-prev
+        padding-right: 5px
+        right: 75px
+
+    .slick-arrow-next
+        padding-left: 5px
+        right: 0
+
+
+.wp-block-childress-media-text-slide
+    display: flex
+
+    .media-text-slide
+        &__content
+            flex: 2
+            margin-right: 30px
+
+            h3
+                +font-size(36)
+                color: $color-primary
+                margin-bottom: 15px
+
+        &__media
+            align-items: center
+            display: flex
+            flex: 3
+            justify-content: center
+
+.slick-initialized
+    .media-text-slide.slick-slide // sass-lint:disable-line force-element-nesting
+        display: flex
+        flex-direction: column
+
+@media screen and ( min-width: 768px )
+    .slick-initialized
+        .media-text-slide.slick-slide // sass-lint:disable-line force-element-nesting
+            flex-direction: row

@@ -1,0 +1,33 @@
+@import '../_variables.sass'
+
+.wp-block-childress-gradient-box
+    padding: 45px 0
+    position: relative
+
+    // &:hover
+    //     .gradient-box__gradient
+    //         background-position: 100%
+
+    .gradient-box
+        &__title
+            +font-size(42)
+            text-align: center
+
+        &__gradient
+            animation: animGradient 3s linear infinite
+            background-position: 0
+            background-repeat: repeat
+            background-size: 33%
+            height: 100%
+            left: -100%
+            position: absolute
+            top: 0
+            transition: background-position .5s linear
+            width: 300%
+
+@keyframes animGradient
+    0%
+        left: -200%
+
+    100%
+        left: -100%

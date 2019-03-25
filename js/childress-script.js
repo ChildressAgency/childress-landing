@@ -24,17 +24,41 @@ $( document ).ready( function(){
         if( $windowWidth == 0 || $windowWidth != $tempWidth ){
             $( '.hero-box--full' ).each( function(){
                 $( this ).css( 'min-height', '100vh' );
-                $( this ).css( 'min-height', $( this ).outerHeight() );
+                $( this ).css( 'height', 'unset' );
+                $( this ).css( 'height', $( this ).outerHeight() );
+                $( this ).css( 'min-height', 'unset' );
             } );
             $windowWidth = $tempWidth;
         }
     }
     $( window ).on( 'resize', function(){
-        fixHeroJump();
+        $tempWidth = $( window ).width();
+        if( $windowWidth == 0 || $windowWidth != $tempWidth ){
+            fixHeroJump();
+        }
     } );
     fixHeroJump();
 
     /**
+     * HERO WORD WALL
+     */
+    $( '.hero-box__word-wall' ).each( function(){
+        $lines = $( this ).children();
+        $words = $( $lines ).children();
+        $prev = $words[0];
+        setInterval( function(){
+            var rand = Math.floor( Math.random() * $words.length );
+
+            $( $prev ).removeClass( 'hero-box__word-wall-highlight' );
+            
+            $( $words[rand] ).addClass( 'hero-box__word-wall-highlight' );
+            $prev = $words[rand];
+        }, 3000 );
+    } );
+
+    /**
+     * TABS
+     *
      * Manage the tabs block
      */
     $classes = $( '.tabs-section--titles' ).attr( 'class' );
@@ -106,7 +130,7 @@ $( document ).ready( function(){
     /**
      * HERO BOX ANIMATIONS
      *
-     * Handle the slide in effects for hero boxes
+     * Handle the animations for hero boxes
      */
     $heroes = $( '.wp-block-childress-hero-box' );
     $heroes.first().find( '.hero-box__title' ).css( 'transform', 'translateX(0)' );
@@ -122,6 +146,10 @@ $( document ).ready( function(){
             }
         } );
     } );
+
+    // rotate image to follow mouse
+    $( '.hero-box__tilt' ).tilt();
+
 
     /**
      * CASE STUDIES
@@ -178,5 +206,142 @@ $( document ).ready( function(){
 
     $( '.contact__close' ).click( function(){
         $( '.contact' ).removeClass( 'contact--show' );
+    } );
+
+
+    /**
+     * SECTION HEADING
+     */
+    function resizeSectionHeading(){
+        $headings = $( '.section-heading h2' );
+        $headings.each( function(){
+            $( this ).textFit({maxFontSize: 250});
+            $newSize = $( this ).find( '.textfitted' ).css( 'font-size' );
+            // console.log( $newSize );
+            $( this ).css( 'font-size', $newSize );
+        } );
+    }
+    resizeSectionHeading();
+
+    $( window ).resize( function(){
+        resizeSectionHeading();
+    } );
+
+
+    /**
+     * MEDIA & TEXT SLIDER
+     */
+    $( '.media-text-slider' ).slick({
+        adaptiveHeight: true,
+        arrows: true,
+        autoplay: false,
+        dots: false,
+        infinite: true,
+        slidesToScroll: 1,
+        slidesToShow: 1,
+        prevArrow: '<i class="fas fa-angle-left slick-arrow-prev"></i>',
+        nextArrow: '<i class="fas fa-angle-right slick-arrow-next"></i>',
+    });
+
+
+    /**
+     * SERVICES
+     */
+
+    // deselect all services
+    function deselectServices(){
+        $( '.service' ).removeClass( 'service--selected' );
+        $( '.service__title' ).removeClass( 'service__title--selected' );
+        $( '.service__img' ).removeClass( 'service__img--selected' );
+        $( '.service__content' ).removeClass( 'service__content--selected' );
+
+        $( '.services__controls' ).removeClass( 'services__controls--selected' );
+    }
+
+    // select a service
+    $( '.service__title' ).click(function(){
+        deselectServices();
+
+        $( this ).parent().addClass( 'service--selected' );
+        $( this ).addClass( 'service__title--selected' );
+        $( this ).parent().siblings().children('.service__title').addClass( 'service__title--selected' );
+        $( this ).siblings( '.service__img' ).addClass( 'service__img--selected' );
+        $( this ).siblings( '.service__content' ).addClass( 'service__content--selected' );
+
+        $( this ).parent().siblings( '.services__controls' ).addClass( 'services__controls--selected' );
+    });
+
+    // make the services box big enough for all of the content
+    function resizeServices(){
+        $( '.wp-block-childress-services' ).each( function(){
+            $servicesHeight = 0;
+            $titlesHeight = 0;
+
+            $( '.wp-block-childress-service' ).each( function(){
+                if( $servicesHeight < $( this ).find( '.service__content' ).outerHeight() )
+                    $servicesHeight = $( this ).find( '.service__content' ).outerHeight();
+
+                $titlesHeight += $( this ).outerHeight();
+            } );
+
+            // account for padding
+            $titlesHeight += 60;
+
+            // adjust height for mobile layout
+            if( $( window ).width() < 768 )
+                $servicesHeight += 100;
+
+            if( $servicesHeight > $titlesHeight )
+                $( this ).css( 'height', $servicesHeight + 'px' );
+            else
+                $( this ).css( 'height', $titlesHeight + 'px' );
+        } );
+    }
+    resizeServices();
+
+    $( window ).resize( function(){
+        resizeServices();
+    } );
+
+    // close all services
+    $( '.services__close' ).click( function(){
+        deselectServices();
+    } );
+
+    // select the next service
+    $( '.services__next' ).click( function(){
+        $selected = $( '.service--selected' );
+        $next = $selected.next();
+
+        if( $next.length == 0 ){
+            $next = $selected.siblings( '.service' )[0];
+        }
+
+        $selected.removeClass( 'service--selected' );
+        $selected.find( '.service__img' ).removeClass( 'service__img--selected' );
+        $selected.find( '.service__content' ).removeClass( 'service__content--selected' );
+
+        $( $next ).addClass( 'service--selected' );
+        $( $next ).find( '.service__img' ).addClass( 'service__img--selected' );
+        $( $next ).find( '.service__content' ).addClass( 'service__content--selected' );
+    } );
+
+    // select the previous service
+    $( '.services__prev' ).click( function(){
+        $selected = $( '.service--selected' );
+        $prev = $selected.prev( '.service' );
+
+        if( $prev.length == 0 ){
+            $siblings = $selected.siblings( '.service' );
+            $prev = $siblings[$siblings.length - 1];
+        }
+
+        $selected.removeClass( 'service--selected' );
+        $selected.find( '.service__img' ).removeClass( 'service__img--selected' );
+        $selected.find( '.service__content' ).removeClass( 'service__content--selected' );
+
+        $( $prev ).addClass( 'service--selected' );
+        $( $prev ).find( '.service__img' ).addClass( 'service__img--selected' );
+        $( $prev ).find( '.service__content' ).addClass( 'service__content--selected' );
     } );
 } );

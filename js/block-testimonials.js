@@ -130,11 +130,11 @@ registerBlockType( 'childress/testimonial', {
             <div className={ 'wp-block-childress-testimonial' }>
                 <div className='testimonial'>
                     <div className='testimonial__quotes'>
-                        <img src='wp-content\/uploads\/2019\/02\/CA_LandingPage_QuoteMarks-10.svg' alt='quotes'/>
+                        <img src='/wp-content/uploads/2019/02/CA_LandingPage_QuoteMarks-10.svg' alt='quotes'/>
                     </div>
                     <div className='testimonial__content'>
                         <div className='testimonial__text'>
-                            <img className='testimonial__inner-quotes' src='wp-content\/uploads\/2019\/02\/CA_LandingPage_QuoteMarks-10.svg' alt='quotes'/>
+                            <img className='testimonial__inner-quotes' src='/wp-content/uploads/2019/02/CA_LandingPage_QuoteMarks-10.svg' alt='quotes'/>
                             <p>{ testimonial }</p>
                         </div>
                         <div className='testimonial__info'>

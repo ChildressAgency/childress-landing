@@ -13,6 +13,16 @@
             position: relative
             width: 50%
 
+            &::after
+                background-color: $color-shade
+                content: ' '
+                display: block
+                height: 100%
+                left: 0
+                position: absolute
+                top: 0
+                width: 100%
+
         &__bg-image
             height: 100%
             object-fit: cover
@@ -51,6 +61,7 @@
             flex-direction: column
             justify-content: center
             padding: 30px 15px
+            z-index: 99999
 
         &__heading
             +font-size(34)
