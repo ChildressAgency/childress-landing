@@ -430,3 +430,33 @@ function gradient_box_block(){
 }
 add_action( 'init', 'gradient_box_block', 10, 0 );
 
+///////////////////////////////////////////////////////////////////////////////
+// ANIMATED BUTTON                                                           //
+///////////////////////////////////////////////////////////////////////////////
+function animated_button_block(){
+    wp_register_script(
+        'animated-button-script',
+        get_template_directory_uri() . '/js/block-animated-button.js',
+        array( 'wp-blocks', 'wp-element', 'wp-editor', 'wp-components' )
+    );
+
+    wp_register_style(
+        'animated-button-editor-style',
+        get_template_directory_uri() . '/css/block-animated-button-editor-style.css',
+        array( 'wp-edit-blocks' )
+    );
+
+    wp_register_style(
+        'animated-button-style',
+        get_template_directory_uri() . '/css/block-animated-button-style.css',
+        array( 'wp-edit-blocks' )
+    );
+
+    register_block_type('childress/animated-button', array(
+        'editor_script' => 'animated-button-script',
+        'editor_style'  => 'animated-button-editor-style',
+        'style'  => 'animated-button-style',
+    ) );
+}
+add_action( 'init', 'animated_button_block', 10, 0 );
+
