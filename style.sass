@@ -56,7 +56,7 @@
         top: 0
         transition: height .3s ease, background-color .3s ease
         width: 100%
-        z-index: 999999999
+        z-index: 99998
 
         &--scroll
             background-color: $color-primary
@@ -193,6 +193,17 @@
         &__content
             flex: 1
             padding: 15px
+
+    .wp-block-columns.has-2-columns // sass-lint:disable-line force-element-nesting
+        h3
+            +font-size(26)
+            color: $color-primary
+            margin-bottom: 15px
+
+    .wp-block-image
+        img
+            display: block
+            margin: 0 auto
 
 
     .has-orange-background-color
